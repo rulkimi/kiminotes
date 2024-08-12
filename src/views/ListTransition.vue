@@ -1,8 +1,8 @@
 <script setup>
 import PageLayout from '../layout/PageLayout.vue';
-import { ref } from 'vue';
+import PreviewBlock from '../components/templates/PreviewBlock.vue';
 
-const activeTab = ref('template');
+import { ref } from 'vue';
 
 const items = ref([
   { id: 1, name: 'Apple' },
@@ -96,8 +96,11 @@ const styleCode = ref(`.list-enter-from, .list-leave-to {
     </template>
 
     <template #content>
-
-      <div class="h-[250px] p-4 flex items-start gap-6 border-t border-x rounded-t-lg">
+      <PreviewBlock
+        :template-code="templateCode"
+        :script-code="scriptCode"
+        :style-code="styleCode"
+      >
         <transition-group class="relative flex flex-col gap-1 w-[150px]" tag="ul">
           <span key="title">No transition</span>
           <li
@@ -131,51 +134,7 @@ const styleCode = ref(`.list-enter-from, .list-leave-to {
             <button class="close-icon" @click="removeItem(itemsThree, item.id)">x</button>
           </li>
         </transition-group>
-      </div>
-
-      <div class="flex flex-col">
-
-        <!-- Tabs -->
-        <div class="flex space-x-4 p-2 border-t border-x">
-          <button
-            :class="{ 'text-primary font-semibold': activeTab === 'template' }"
-            @click="activeTab = 'template'"
-          >
-            Template
-          </button>
-          <button
-            :class="{ 'text-primary font-semibold': activeTab === 'script' }"
-            @click="activeTab = 'script'"
-
-          >
-            Script
-          </button>
-          <button
-            :class="{ 'text-primary font-semibold': activeTab === 'style' }"
-            @click="activeTab = 'style'"
-          >
-            Style
-          </button>
-        </div>
-
-        <!-- Code Display -->
-        <div v-if="activeTab === 'template'">
-          <pre v-highlight:template>
-            <code class="xml">{{ templateCode }}</code>
-          </pre>
-        </div>
-        <div v-if="activeTab === 'script'">
-          <pre v-highlight:script>
-            <code class="javascript">{{ scriptCode }}</code>
-          </pre>
-        </div>
-        <div v-if="activeTab === 'style'">
-          <pre v-highlight:style-scoped>
-            <code class="css">{{ styleCode }}</code>
-          </pre>
-        </div>
-
-      </div>
+      </PreviewBlock>
     </template>
   </PageLayout>
 </template>
