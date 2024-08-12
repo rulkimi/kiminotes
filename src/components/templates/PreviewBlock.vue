@@ -1,18 +1,27 @@
 <script setup>
 import { ref, computed, useSlots, onMounted } from 'vue';
 
-const activeTab = ref('template');
-
 const props = defineProps({
+  fileName: String,
   templateCode: String,
   scriptCode: String,
   styleCode: String,
+  jsonCode: String,
 });
+
+const activeTab = ref('');
+
+const determineActiveTab = () => {
+  if (props.templateCode) return 'template';
+  if (props.scriptCode) return 'script';
+  if (props.styleCode) return 'style';
+  if (props.jsonCode) return 'json';
+  return ''; 
+};
 
 onMounted(() => {
-  activeTab.value = props.templateCode ? 'template' : props.scriptCode ? 'script' : 'style';
+  activeTab.value = determineActiveTab();
 });
-
 
 const slots = useSlots();
 const hasDisplay = computed(() => !!slots.default);
@@ -28,6 +37,14 @@ const hasDisplay = computed(() => !!slots.default);
     <div class="flex flex-col">
       <!-- Tabs -->
       <div
+        v-if="fileName"
+        class="flex space-x-4 p-2 border-t border-x"
+        :class="{ 'rounded-t-lg' : !hasDisplay }"
+      >
+        <div class="text-primary font-semibold">{{ fileName }}</div>
+      </div>
+      <div
+        v-else
         class="flex space-x-4 p-2 border-t border-x"
         :class="{ 'rounded-t-lg' : !hasDisplay }"
       >
@@ -53,6 +70,13 @@ const hasDisplay = computed(() => !!slots.default);
         >
           Style
         </button>
+        <button
+          v-if="jsonCode"
+          :class="{ 'text-primary font-semibold': activeTab === 'json' }"
+          @click="activeTab = 'json'"
+        >
+          JSON
+        </button>
       </div>
 
       <!-- Code Display -->
@@ -69,6 +93,11 @@ const hasDisplay = computed(() => !!slots.default);
       <div v-if="activeTab === 'style'">
         <pre v-highlight>
           <code class="css">{{ styleCode }}</code>
+        </pre>
+      </div>
+      <div v-if="activeTab === 'json'">
+        <pre v-highlight>
+          <code class="css">{{ jsonCode }}</code>
         </pre>
       </div>
     </div>

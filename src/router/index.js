@@ -8,6 +8,7 @@ const routes = [
   { path: '/scroll-animation', component: () => import('../views/ScrollAnimation.vue') },
   { path: '/form-elements', component: () => import('../views/FormElements.vue') },
   { path: '/scroll-offset', component: () => import('../views/ScrollOffset.vue') },
+  { path: '/web-history', component: () => import('../views/WebHistory.vue') },
 ]
 
 const router = createRouter({

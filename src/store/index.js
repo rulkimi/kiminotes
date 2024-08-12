@@ -13,6 +13,12 @@ export const useMainStore = defineStore('main', () => {
       ]
     },
     {
+      name: 'Github Pages',
+      menus: [
+        { name: 'Web History (vite)', path: '/web-history' },
+      ]
+    },
+    {
       name: 'Components',
       menus: [
         { name: 'Form Elements', path: '/form-elements' },
