@@ -6,6 +6,7 @@ const routes = [
   { path: '/', component: HomeView },
   { path: '/list-transition', component: () => import('../views/ListTransition.vue') },
   { path: '/scroll-animation', component: () => import('../views/ScrollAnimation.vue') },
+  { path: '/form-elements', component: () => import('../views/FormElements.vue') },
 ]
 
 const router = createRouter({

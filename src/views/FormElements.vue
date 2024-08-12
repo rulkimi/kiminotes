@@ -5,7 +5,7 @@ import PageLayout from '../layout/PageLayout.vue';
 <template>
   <PageLayout>
     <template #subtitle>
-      Smooth scroll animation.
+      Form elements with set of styles and props.
     </template>
   </PageLayout>
 </template>
