@@ -1,4 +1,4 @@
-import{_ as l}from"./PageLayout-DkzGUwkr.js";import{_ as c}from"./PreviewBlock-BOiSvVF-.js";import{r as e,c as i,w as t,o as r,a as o,b as f,d as s}from"./index-B3iSpAHH.js";const m=s("span",{class:"font-mono"},"offsetHeight()",-1),u=s("span",{class:"font-mono"},"getBoundingClientRect()",-1),h={__name:"ScrollOffset",setup(d){const n=e(`<template>
+import{_ as l}from"./PageLayout-CBLy-Szt.js";import{_ as c}from"./PreviewBlock-Bt7bzQTJ.js";import{r as e,c as i,w as t,o as r,a as o,b as f,d as s}from"./index-CryDjlju.js";const m=s("span",{class:"font-mono"},"offsetHeight()",-1),u=s("span",{class:"font-mono"},"getBoundingClientRect()",-1),h={__name:"ScrollOffset",setup(d){const n=e(`<template>
   <nav ref="navbar" class="fixed pb-2 w-full z-20 top-0 start-0">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
