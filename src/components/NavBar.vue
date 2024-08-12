@@ -10,7 +10,7 @@ const store = useMainStore();
   </div>
 
   <!-- mobile view -->
-  <div class="sticky top-[3.5rem] md:hidden border-b h-14 bg-background/90">
+  <div class="sticky top-[3.5rem] md:hidden border-b h-14 bg-background/90 z-10">
     <div class="max-w-[1280px] mx-auto h-full p-4">
       <div>
         <button @click="store.toggleSidebar" aria-label="Toggle sidebar">
