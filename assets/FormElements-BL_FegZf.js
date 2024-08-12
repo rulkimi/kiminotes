@@ -1,0 +1,1 @@
+import{_ as e}from"./PageLayout-M7EN2Iq6.js";import{c as t,w as s,o,a}from"./index-DxF87Fs1.js";const l={__name:"FormElements",setup(r){return(_,c)=>(o(),t(e,null,{subtitle:s(()=>[a(" Form elements with set of styles and props. ")]),_:1}))}};export{l as default};
