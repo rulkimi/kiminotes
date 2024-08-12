@@ -12,21 +12,8 @@ const items = ref([
   { id: 5, name: 'Pineapple' },
 ]);
 
-const itemsTwo = ref([
-  { id: 1, name: 'Apple' },
-  { id: 2, name: 'Orange' },
-  { id: 3, name: 'Watermelon' },
-  { id: 4, name: 'Papaya' },
-  { id: 5, name: 'Pineapple' },
-]);
-
-const itemsThree = ref([
-  { id: 1, name: 'Apple' },
-  { id: 2, name: 'Orange' },
-  { id: 3, name: 'Watermelon' },
-  { id: 4, name: 'Papaya' },
-  { id: 5, name: 'Pineapple' },
-]);
+const itemsTwo = ref([...items.value]);
+const itemsThree = ref([...items.value]);
 
 const removeItem = (items, itemId) => {
   const index = items.findIndex(item => item.id === itemId);
