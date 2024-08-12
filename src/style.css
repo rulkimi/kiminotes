@@ -6,7 +6,4 @@
   body {
     @apply bg-background m-0 min-w-[320px] min-h-screen;
   }
-  #app {
-    @apply max-w-[1280px] mx-auto;
-  }
 }
