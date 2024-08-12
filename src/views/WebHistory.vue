@@ -17,15 +17,15 @@ const jsonCode = ref(`{
 }
 `);
 
-const scriptCode = ref(`import { createWebHistory, createRouter } from 'vue-router';
+const scriptCode = ref(`import { createWebHashHistory, createRouter } from 'vue-router';
 
 const routes = [
   // ... paths
 ]
 
 const router = createRouter({
-  // make sure to add base path inside createWebHistory
-  history: createWebHistory('/<repository-name>/'),
+  // make sure to use createWebHashHistory as createWebHistory will mess up the github page on refresh
+  history: createWebHashHistory(),
   routes,
 })
 
@@ -59,7 +59,7 @@ export default defineConfig({
         <PreviewBlock :json-code="jsonCode" file-name="package.json" />
         
         <h3 class="text-lg font-bold">2. Configuring the Vue Router</h3>
-        <p>When configuring Vue Router, you must specify the base path in <span class="font-mono">createWebHistory</span>. This ensures that the router correctly handles paths when deployed under a subpath on GitHub Pages.</p>
+        <p>When configuring Vue Router, you must specify the base path in <span class="font-mono">createWebHashHistory</span>. This ensures that the router correctly handles paths when deployed under a subpath on GitHub Pages.</p>
         <PreviewBlock :script-code="scriptCode" file-name="/router/index.js" />
 
         <h3 class="text-lg font-bold">3. Configuring Vite</h3>
