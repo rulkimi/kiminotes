@@ -4,10 +4,10 @@ const store = useMainStore();
 </script>
 
 <template>
-  <div class="border-r h-[calc(100vh-3.5rem)] text-nowrap w-[300px]">
+  <div class="sticky top-[3.5rem] border-r h-[calc(100vh-3.5rem)] text-nowrap w-[300px] overflow-auto">
     <div class="w-full p-6">
 
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-5">
         <div v-for="section in store.sections" class="flex flex-col gap-2">
           <div class="font-semibold">{{ section.name }}</div>
           <ul class="flex flex-col gap-0">

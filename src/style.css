@@ -3,7 +3,40 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* For WebKit browsers (Chrome, Safari) */
+    ::-webkit-scrollbar {
+      width: 8px; /* Adjust width as needed */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #a4a3a3; /* Scrollbar color */
+      border-radius: 10px; /* Round corners */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a4a3a3; /* Color when hovered */
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Background of the track */
+      border-radius: 10px; /* Round corners */
+    }
+
+    /* For Firefox */
+    .scrollable-element {
+      scrollbar-width: thin; /* Use thin scrollbar */
+      scrollbar-color: #a4a3a3 #f1f1f1; /* Scrollbar color and track background */
+    }
+  }
+  
   body {
     @apply bg-background m-0 min-w-[320px] min-h-screen text-text;
+  }
+  pre {
+    @apply relative;
+  }
+  pre code {
+    @apply rounded-lg;
   }
 }
