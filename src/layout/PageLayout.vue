@@ -7,6 +7,7 @@
     <p class="text-lg">
       <slot name="subtitle"></slot>
     </p>
+    <slot name="content"></slot>
   </div>
   <div v-else>
     <p>Coming soon.</p>
