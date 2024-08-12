@@ -4,6 +4,6 @@ import BaseLayout from './layout/BaseLayout.vue';
 
 <template>
   <BaseLayout>
-    Hello
+    <router-view></router-view>
   </BaseLayout>
 </template>

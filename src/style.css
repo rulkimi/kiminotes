@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply bg-background m-0 min-w-[320px] min-h-screen;
+    @apply bg-background m-0 min-w-[320px] min-h-screen text-text;
   }
 }
