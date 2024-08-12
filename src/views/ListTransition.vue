@@ -34,8 +34,7 @@ const removeItem = (items, itemId) => {
   }
 };
 
-const templateCode = ref(`<template>
-  <transition-group class="relative flex flex-col gap-1" name="list" tag="ul" appear>
+const templateCode = ref(`<transition-group class="relative flex flex-col gap-1" name="list" tag="ul" appear>
     <li
       class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
       v-for="item in items"
@@ -50,11 +49,9 @@ const templateCode = ref(`<template>
       </button>
     </li>
   </transition-group>
-<\/template>
 `);
 
-const scriptCode = ref(`<script setup>
-import { ref } from 'vue';
+const scriptCode = ref(`import { ref } from 'vue';
 
 const items = ref([
   { id: 1, name: 'Apple' },
@@ -70,11 +67,9 @@ const removeItem = (items, itemId) => {
     items.splice(index, 1);
   }
 };
-<\/script>
 `);
 
-const styleCode = ref(`<style scoped>
-.list-enter-from, .list-leave-to {
+const styleCode = ref(`.list-enter-from, .list-leave-to {
   opacity: 0;
   transform: scale(0.6);
 }
@@ -90,7 +85,6 @@ const styleCode = ref(`<style scoped>
 .list-leave-active {
   position: absolute;
 }
-<\/style>
 `);
 </script>
 
@@ -139,14 +133,14 @@ const styleCode = ref(`<style scoped>
           </transition-group>
         </div>
 
-        <pre v-highlight>
+        <pre v-highlight:template>
           <code class="xml">{{ templateCode }}</code>
         </pre>
-        <pre v-highlight>
-          <code class="xml">{{ scriptCode }}</code>
+        <pre v-highlight:script>
+          <code class="javascript">{{ scriptCode }}</code>
         </pre>
-        <pre v-highlight>
-          <code class="xml">{{ styleCode }}</code>
+        <pre v-highlight:style-scoped>
+          <code class="css">{{ styleCode }}</code>
         </pre>
 
       </div>
