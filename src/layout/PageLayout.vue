@@ -4,7 +4,7 @@
     <h1 class="text-2xl font-bold mb-2">
       {{ currentSection.menus.find(menu => menu.path === store.currentPath).name }}
     </h1>
-    <p class="text-lg">
+    <p class="text-lg mb-2">
       <slot name="subtitle"></slot>
     </p>
     <slot name="content"></slot>
