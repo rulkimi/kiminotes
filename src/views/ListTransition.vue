@@ -34,8 +34,26 @@ const removeItem = (items, itemId) => {
   }
 };
 
+const templateCode = ref(`<template>
+  <transition-group class="relative flex flex-col gap-1" name="list" tag="ul" appear>
+    <li
+      class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
+      v-for="item in items"
+      :key="item.id"
+    >
+      {{ item.name }}
+      <button
+        class="close-icon"
+        @click="removeItem(items, item.id)"
+      >
+        x
+      </button>
+    </li>
+  </transition-group>
+<\/template>
+`);
 
-const code = ref(`<script setup>
+const scriptCode = ref(`<script setup>
 import { ref } from 'vue';
 
 const items = ref([
@@ -53,26 +71,9 @@ const removeItem = (items, itemId) => {
   }
 };
 <\/script>
+`);
 
-<template>
-  <transition-group class="relative flex flex-col gap-1" name="list" tag="ul" appear>
-    <li
-      class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
-      v-for="item in items"
-      :key="item.id"
-    >
-      {{ item.name }}
-      <button
-        class="close-icon"
-        @click="removeItem(items, item.id)"
-      >
-        x
-      </button>
-    </li>
-  </transition-group>
-<\/template>
-
-<style scoped>
+const styleCode = ref(`<style scoped>
 .list-enter-from, .list-leave-to {
   opacity: 0;
   transform: scale(0.6);
@@ -100,48 +101,55 @@ const removeItem = (items, itemId) => {
     </template>
 
     <template #content>
+      <div class="flex flex-col gap-4">
 
-      <div class="h-[200px] p-2 flex items-start gap-6">
-        <transition-group class="relative flex flex-col gap-1" tag="ul">
-          <span key="title">No transition</span>
-          <li
-            class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
-            v-for="item in items"
-            :key="item.id"
-          >
-            {{ item.name }}
-            <button class="close-icon" @click="removeItem(items, item.id)">x</button>
-          </li>
-        </transition-group>
+        <div class="h-[220px] p-2 flex items-start gap-6">
+          <transition-group class="relative flex flex-col gap-1" tag="ul">
+            <span key="title">No transition</span>
+            <li
+              class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1 w-[150px]"
+              v-for="item in items"
+              :key="item.id"
+            >
+              {{ item.name }}
+              <button class="close-icon" @click="removeItem(items, item.id)">x</button>
+            </li>
+          </transition-group>
+          <transition-group class="relative flex flex-col gap-1" name="list" tag="ul">
+            <span key="title">Transition</span>
+            <li
+              class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1 w-[150px]"
+              v-for="item in itemsTwo"
+              :key="item.id"
+            >
+              {{ item.name }}
+              <button class="close-icon" @click="removeItem(itemsTwo, item.id)">x</button>
+            </li>
+          </transition-group>
+          <transition-group class="relative flex flex-col gap-1" name="list" tag="ul" appear>
+            <span key="title" class="text-nowrap"><span class="font-mono">appear</span> attribute</span>
+            <li
+              class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1 w-[150px]"
+              v-for="item in itemsThree"
+              :key="item.id"
+            >
+              {{ item.name }}
+              <button class="close-icon" @click="removeItem(itemsThree, item.id)">x</button>
+            </li>
+          </transition-group>
+        </div>
 
-        <transition-group class="relative flex flex-col gap-1" name="list" tag="ul">
-          <span key="title">Transition</span>
-          <li
-            class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
-            v-for="item in itemsTwo"
-            :key="item.id"
-          >
-            {{ item.name }}
-            <button class="close-icon" @click="removeItem(itemsTwo, item.id)">x</button>
-          </li>
-        </transition-group>
+        <pre v-highlight>
+          <code class="xml">{{ templateCode }}</code>
+        </pre>
+        <pre v-highlight>
+          <code class="xml">{{ scriptCode }}</code>
+        </pre>
+        <pre v-highlight>
+          <code class="xml">{{ styleCode }}</code>
+        </pre>
 
-        <transition-group class="relative flex flex-col gap-1" name="list" tag="ul" appear>
-          <span key="title" class="text-nowrap"><span class="font-mono">appear</span> attribute</span>
-          <li
-            class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
-            v-for="item in itemsThree"
-            :key="item.id"
-          >
-            {{ item.name }}
-            <button class="close-icon" @click="removeItem(itemsThree, item.id)">x</button>
-          </li>
-        </transition-group>
       </div>
-
-      <pre v-highlight>
-        <code class="xml">{{ code }}</code>
-      </pre>
     </template>
   </PageLayout>
 </template>

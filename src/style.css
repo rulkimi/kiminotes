@@ -7,9 +7,9 @@
     @apply bg-background m-0 min-w-[320px] min-h-screen text-text;
   }
   pre {
-    @apply relative;
+    @apply relative whitespace-normal;
   }
   pre code {
-    @apply rounded-lg;
+    @apply rounded-lg whitespace-pre text-sm;
   }
 }
