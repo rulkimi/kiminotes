@@ -1,16 +1,22 @@
 <script setup>
-import { ref, computed, useSlots} from 'vue';
+import { ref, computed, useSlots, onMounted } from 'vue';
+
 const activeTab = ref('template');
 
-defineProps({
+const props = defineProps({
   templateCode: String,
   scriptCode: String,
   styleCode: String,
 });
 
+onMounted(() => {
+  activeTab.value = props.templateCode ? 'template' : props.scriptCode ? 'script' : 'style';
+});
+
+
 const slots = useSlots();
 const hasDisplay = computed(() => !!slots.default);
-</script>;
+</script>
 
 
 <template>
