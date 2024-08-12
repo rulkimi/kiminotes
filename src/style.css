@@ -12,4 +12,18 @@
   pre code {
     @apply rounded-b-lg whitespace-pre text-sm;
   }
+
+  /* Background grid styling */
+  .bg-grid {
+    @apply inset-0 h-full w-full relative;
+
+    /* Create grid background with light gray lines */
+    background-image: 
+      linear-gradient(to right, #6a696912 1px, transparent 1px),
+      linear-gradient(to bottom, #6a696912 1px, transparent 1px);
+    
+    /* Set the size of the grid cells */
+    background-size: 24px 24px;
+  }
+
 }

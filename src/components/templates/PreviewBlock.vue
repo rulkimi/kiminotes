@@ -21,7 +21,7 @@ const hasDisplay = computed(() => !!slots.default);
 
 <template>
   <div>
-    <div v-if="hasDisplay" class="p-4 flex items-start gap-6 border-t border-x rounded-t-lg">
+    <div v-if="hasDisplay" class="bg-grid p-4 flex items-start gap-6 border-t border-x rounded-t-lg">
       <slot></slot>
     </div>
 
