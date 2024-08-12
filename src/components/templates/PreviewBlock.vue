@@ -26,12 +26,14 @@ const hasDisplay = computed(() => !!slots.default);
         :class="{ 'rounded-t-lg' : !hasDisplay }"
       >
         <button
+          v-if="templateCode"
           :class="{ 'text-primary font-semibold': activeTab === 'template' }"
           @click="activeTab = 'template'"
         >
           Template
         </button>
         <button
+          v-if="scriptCode"
           :class="{ 'text-primary font-semibold': activeTab === 'script' }"
           @click="activeTab = 'script'"
 
@@ -39,6 +41,7 @@ const hasDisplay = computed(() => !!slots.default);
           Script
         </button>
         <button
+          v-if="styleCode"
           :class="{ 'text-primary font-semibold': activeTab === 'style' }"
           @click="activeTab = 'style'"
         >
@@ -47,17 +50,17 @@ const hasDisplay = computed(() => !!slots.default);
       </div>
 
       <!-- Code Display -->
-      <div v-if="templateCode && activeTab === 'template'">
+      <div v-if="activeTab === 'template'">
         <pre v-highlight>
           <code class="xml">{{ templateCode }}</code>
         </pre>
       </div>
-      <div v-if="scriptCode && activeTab === 'script'">
+      <div v-if="activeTab === 'script'">
         <pre v-highlight>
           <code class="javascript">{{ scriptCode }}</code>
         </pre>
       </div>
-      <div v-if="styleCode && activeTab === 'style'">
+      <div v-if="activeTab === 'style'">
         <pre v-highlight>
           <code class="css">{{ styleCode }}</code>
         </pre>
