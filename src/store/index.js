@@ -33,10 +33,18 @@ export const useMainStore = defineStore('main', () => {
     return null;
   });
 
+  const isSidebarOpen = ref(false);
+
+  const toggleSidebar = () => {
+    isSidebarOpen.value = !isSidebarOpen.value;
+  };
+
   return {
     currentPath,
     currentSection,
     sections,
     setCurrentPath,
+    isSidebarOpen,
+    toggleSidebar
   };
 });

@@ -1,15 +1,30 @@
 <script setup>
 import { useMainStore } from '../store';
 const store = useMainStore();
+
+const clickLink = path => {
+  store.setCurrentPath(path);
+  store.toggleSidebar();
+}
 </script>
 
 <template>
-  <div class="sticky top-[3.5rem] border-r h-[calc(100vh-3.5rem)] text-nowrap w-[300px] overflow-auto">
+  <!-- Sidebar -->
+  <div
+    :class="{
+      'translate-x-0': store.isSidebarOpen,
+      '-translate-x-full': !store.isSidebarOpen
+    }"
+    class="fixed top-0 left-0 w-[300px] h-full bg-background transition-transform transform md:translate-x-0 md:relative md:sticky md:top-[3.5rem] md:h-[calc(100vh-3.5rem)] border-r overflow-auto text-nowrap z-10"
+  >
     <div class="w-full p-6">
 
       <div class="flex flex-col gap-5">
-        <div v-for="section in store.sections" class="flex flex-col gap-2">
-          <div class="font-semibold">{{ section.name }}</div>
+        <div v-for="(section, index) in store.sections" class="flex flex-col gap-2">
+          <div class="font-semibold flex justify-between">
+            <span>{{ section.name }}</span>
+            <span class="block md:hidden" v-if="index === 0" @click="store.toggleSidebar">Close</span>
+          </div>
           <ul class="flex flex-col gap-0">
             <li
               v-for="menu in section.menus"
@@ -19,7 +34,7 @@ const store = useMainStore();
             >
               <router-link
                 :to="menu.path"
-                @click="store.setCurrentPath(menu.path)"
+                @click="clickLink(menu.path)"
               >
                 {{ menu.name }}
               </router-link>
