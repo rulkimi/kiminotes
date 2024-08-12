@@ -7,6 +7,7 @@ const routes = [
   { path: '/list-transition', component: () => import('../views/ListTransition.vue') },
   { path: '/scroll-animation', component: () => import('../views/ScrollAnimation.vue') },
   { path: '/form-elements', component: () => import('../views/FormElements.vue') },
+  { path: '/scroll-offset', component: () => import('../views/ScrollOffset.vue') },
 ]
 
 const router = createRouter({
@@ -14,4 +15,4 @@ const router = createRouter({
   routes,
 })
 
-export default router
+export default router;

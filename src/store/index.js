@@ -8,6 +8,7 @@ export const useMainStore = defineStore('main', () => {
       name: 'UI Tips',
       menus: [
         { name: 'Transition for List', path: '/list-transition' },
+        { name: 'Scroll Offset', path: '/scroll-offset' },
         { name: 'Scroll Animation', path: '/scroll-animation' },
       ]
     },
