@@ -8,8 +8,13 @@ import SideBar from '../components/SideBar.vue';
   <div class="max-w-[1280px] mx-auto">
     <div class="flex">
       <SideBar />
-      <div class="p-4">
-        <slot></slot>
+      <div class="w-full p-4">
+        <div class="grid grid-cols-4">
+          <div class="col-span-3">
+            <slot></slot>
+          </div>
+          <div>On this page</div>
+        </div>
       </div>
     </div>
   </div>
