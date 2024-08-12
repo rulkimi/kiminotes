@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, useSlots} from 'vue';
 const activeTab = ref('template');
 
 defineProps({
@@ -7,18 +7,24 @@ defineProps({
   scriptCode: String,
   styleCode: String,
 });
-</script>
+
+const slots = useSlots();
+const hasDisplay = computed(() => !!slots.default);
+</script>;
 
 
 <template>
   <div>
-    <div class="p-4 flex items-start gap-6 border-t border-x rounded-t-lg">
+    <div v-if="hasDisplay" class="p-4 flex items-start gap-6 border-t border-x rounded-t-lg">
       <slot></slot>
     </div>
 
     <div class="flex flex-col">
       <!-- Tabs -->
-      <div class="flex space-x-4 p-2 border-t border-x">
+      <div
+        class="flex space-x-4 p-2 border-t border-x"
+        :class="{ 'rounded-t-lg' : !hasDisplay }"
+      >
         <button
           :class="{ 'text-primary font-semibold': activeTab === 'template' }"
           @click="activeTab = 'template'"
