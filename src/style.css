@@ -10,6 +10,6 @@
     @apply relative whitespace-normal;
   }
   pre code {
-    @apply rounded-lg whitespace-pre text-sm;
+    @apply rounded-b-lg whitespace-pre text-sm;
   }
 }
