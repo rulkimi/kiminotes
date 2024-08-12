@@ -103,7 +103,7 @@ const removeItem = (items, itemId) => {
 
       <div class="h-[200px] p-2 flex items-start gap-6">
         <transition-group class="relative flex flex-col gap-1" tag="ul">
-          No transition
+          <span key="title">No transition</span>
           <li
             class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
             v-for="item in items"
@@ -115,7 +115,7 @@ const removeItem = (items, itemId) => {
         </transition-group>
 
         <transition-group class="relative flex flex-col gap-1" name="list" tag="ul">
-          Transition
+          <span key="title">Transition</span>
           <li
             class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
             v-for="item in itemsTwo"
@@ -127,7 +127,7 @@ const removeItem = (items, itemId) => {
         </transition-group>
 
         <transition-group class="relative flex flex-col gap-1" name="list" tag="ul" appear>
-          <span class="text-nowrap"><span class="font-mono">appear</span> attribute</span>
+          <span key="title" class="text-nowrap"><span class="font-mono">appear</span> attribute</span>
           <li
             class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
             v-for="item in itemsThree"
