@@ -1,26 +1,15 @@
 <script setup>
 import PageLayout from '../layout/PageLayout.vue';
 import PreviewBlock from '../components/templates/PreviewBlock.vue';
+import { getSubLinks } from '../utils';
 
 import { ref, onMounted } from 'vue';
 
 const sublinks = ref([]);
 
 onMounted(() => {
-  getSubLinks();
+  sublinks.value = getSubLinks();
 });
-
-const getSubLinks = () => {
-  const sublinkElements = document.querySelectorAll('.sublink');
-  sublinkElements.forEach(sublinkElement => {
-    console.log()
-    sublinks.value.push({
-      element: sublinkElement,
-      title : sublinkElement.innerText,
-      position : sublinkElement.getBoundingClientRect().top + window.scrollY
-    });
-  });
-}
 
 const jsonCode = ref(`{
   "name": "<repository-name>",
