@@ -1,12 +1,16 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import { useMainStore } from '../store';
 const store = useMainStore();
+const router = useRouter();
 </script>
 
 <template>
   <!-- desktop view -->
   <div class="sticky top-0 border-b h-14 bg-background/90 z-10">
-    <div class="max-w-[1280px] mx-auto h-full p-4">NavBar</div>
+    <div class="max-w-[1280px] mx-auto h-full p-4">
+      <span class="text-lg font-bold" @click="router.push({ path : '/'})">UI Playground</span>
+    </div>
   </div>
 
   <!-- mobile view -->
