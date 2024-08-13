@@ -39,6 +39,10 @@ export const useMainStore = defineStore('main', () => {
     return null;
   });
 
+  const currentMenu = computed(() => {
+    return currentSection.value?.menus.find(menu => menu.path === currentPath.value) || null;
+  });
+
   const isSidebarOpen = ref(false);
 
   const toggleSidebar = () => {
@@ -48,6 +52,7 @@ export const useMainStore = defineStore('main', () => {
   return {
     currentPath,
     currentSection,
+    currentMenu,
     sections,
     setCurrentPath,
     isSidebarOpen,
