@@ -4,7 +4,7 @@
 
 @layer base {  
   body {
-    @apply bg-background m-0 min-w-[320px] min-h-screen text-text;
+    @apply bg-background m-0 min-w-[320px] min-h-screen text-text text-sm;
   }
   pre {
     @apply relative whitespace-normal;
@@ -26,4 +26,7 @@
     background-size: 24px 24px;
   }
 
+  .sublink {
+    @apply cursor-pointer;
+  }
 }
