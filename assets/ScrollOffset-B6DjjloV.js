@@ -1,4 +1,4 @@
-import{_ as l}from"./PageLayout-ZYAvUkez.js";import{_ as c}from"./PreviewBlock-1AZ5u_Gs.js";import{r as e,c as i,w as t,o as r,a as o,b as f,d as s}from"./index-DFvMQKVc.js";const m=s("span",{class:"font-mono"},"offsetHeight()",-1),u=s("span",{class:"font-mono"},"getBoundingClientRect()",-1),h={__name:"ScrollOffset",setup(d){const n=e(`<template>
+import{P as l}from"./PageLayout-BXRg5I9R.js";import{_ as c}from"./PreviewBlock-ClcApW5H.js";import{r as e,c as i,w as t,o as r,a as o,b as f,d as s}from"./index-CTEdMYMx.js";const m=s("span",{class:"font-mono"},"offsetHeight()",-1),u=s("span",{class:"font-mono"},"getBoundingClientRect()",-1),_={__name:"ScrollOffset",setup(d){const n=e(`<template>
   <nav ref="navbar" class="fixed pb-2 w-full z-20 top-0 start-0">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
@@ -43,4 +43,4 @@ const scroll = (refName) => {
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
   }
 };
-`);return(p,v)=>(r(),i(l,null,{subtitle:t(()=>[o(" Get element height by using "),m,o(" and offset the scroll using "),u]),content:t(()=>[f(c,{"script-code":a.value,"template-code":n.value},null,8,["script-code","template-code"])]),_:1}))}};export{h as default};
+`);return(p,v)=>(r(),i(l,null,{subtitle:t(()=>[o(" Get element height by using "),m,o(" and offset the scroll using "),u]),content:t(()=>[f(c,{"script-code":a.value,"template-code":n.value},null,8,["script-code","template-code"])]),_:1}))}};export{_ as default};
