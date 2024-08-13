@@ -33,13 +33,16 @@ const scrollToLink = element => {
       </div>
     </div>
     <div class="hidden lg:block p-6 sticky top-0 self-start">
-      On this page
-      <div
-        v-for="sublink in sublinks"
-        @click="scrollToLink(sublink.element)"
-      >
-        {{ sublink.title }}
-      </div>
+      <p class="font-semibold mb-4">On this page</p>
+      <ul class="flex flex-col gap-2">
+        <li
+          class="cursor-pointer"
+          v-for="sublink in sublinks"
+          @click="scrollToLink(sublink.element)"
+        >
+          {{ sublink.title }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
