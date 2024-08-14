@@ -2,10 +2,12 @@
 import PageLayout from '../layout/PageLayout.vue';
 import FormInput from '../components/templates/FormInput.vue';
 import FormTextarea from '../components/templates/FormTextarea.vue';
+import FormSelect from '../components/templates/FormSelect.vue';
 
 import { ref } from 'vue';
 
 const inputValue = ref('');
+const selectedValue = ref('Hello');
 </script>
 
 <template>
@@ -21,6 +23,11 @@ const inputValue = ref('');
         id="form-textarea"
         placeholder="Type here"
         v-model="inputValue"
+      />
+      <FormSelect
+        v-model="selectedValue"
+        id="form-select"
+        :options="['Hello', 'My name']"
       />
     </template>
   </PageLayout>
