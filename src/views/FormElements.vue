@@ -14,21 +14,29 @@ const selectedValue = ref('Hello');
   <PageLayout>
     <template #subtitle>
       Form elements with set of styles and props.
-      <FormInput
-        id="form-input"
-        placeholder="Type here"
-        v-model="inputValue"
-      />
-      <FormTextarea
-        id="form-textarea"
-        placeholder="Type here"
-        v-model="inputValue"
-      />
-      <FormSelect
-        v-model="selectedValue"
-        id="form-select"
-        :options="['Hello', 'My name']"
-      />
+    </template>
+
+    <template #content>
+      <div class="flex flex-col gap-2">
+        <FormInput
+          label="Form Input"
+          id="form-input"
+          placeholder="Type here"
+          v-model="inputValue"
+        />
+        <FormTextarea
+          label="Textarea"
+          id="form-textarea"
+          placeholder="Type here"
+          v-model="inputValue"
+        />
+        <FormSelect
+          label="Select"
+          v-model="selectedValue"
+          id="form-select"
+          :options="['Hello', 'My name']"
+        />
+      </div>
     </template>
   </PageLayout>
 </template>

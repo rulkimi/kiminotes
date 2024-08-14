@@ -1,9 +1,9 @@
 <template>
   <fieldset :class="width">
-    <div v-if="label" class="block">
+    <div v-if="label" class="block mb-2">
       <label
         :for="id"
-        class="mb-2 text-sm font-medium text-black/60"
+        class="text-sm font-medium text-black/60"
         :class="labelClass"
       >
         {{ label }}
