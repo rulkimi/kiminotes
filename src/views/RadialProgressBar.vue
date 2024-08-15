@@ -138,9 +138,9 @@ setInterval(() => {
         <PreviewBlock :template-code="componentCode" file-name="RadialProgressbar.vue">
             <div class="flex flex-col md:flex-row gap-4">
               <div class="flex gap-4">
-                <RadialProgressBarComponent :progress="progress + 10" />
-                <RadialProgressBarComponent :progress="progress + 20" />
-                <RadialProgressBarComponent :progress="progress + 40" />
+                <RadialProgressBarComponent :size="70" :progress="progress + 10" />
+                <RadialProgressBarComponent :size="70" :progress="progress + 20" />
+                <RadialProgressBarComponent :size="70" :progress="progress + 40" />
               </div>
               <div class="flex flex-col gap-2">
                 <button class="bg-primary/20 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
