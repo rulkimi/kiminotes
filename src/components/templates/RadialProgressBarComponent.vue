@@ -21,8 +21,9 @@ const props = defineProps({
 });
 
 const strokeWidth = 10;
+const clampedProgress = computed(() => Math.min(100, Math.max(0, props.progress)));
 const circumference = computed(() => Number((2 * Math.PI * props.radius).toFixed(1)));
-const strokeDashOffset = computed(() => circumference.value - (circumference.value * props.progress) / 100);
+const strokeDashOffset = computed(() => circumference.value - (circumference.value * clampedProgress.value) / 100);
 const viewBoxSize = computed(() => props.radius * 2 + strokeWidth * 2);
 </script>
 
@@ -56,7 +57,7 @@ const viewBoxSize = computed(() => props.radius * 2 + strokeWidth * 2);
         text-anchor="middle"
         alignment-baseline="middle"
       >
-        {{ progress }}%
+        {{ clampedProgress }}%
       </text>
     </svg>
   </div>
