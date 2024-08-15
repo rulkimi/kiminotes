@@ -144,7 +144,7 @@ setInterval(() => {
               </div>
               <div class="flex flex-col gap-2">
                 <button class="bg-primary/20 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
-                <button class="bg-red-500/20 px-2 py-1 rounded-lg" @click="decreaseProgress">- 10</button>
+                <button v-if="progress" class="bg-red-500/20 px-2 py-1 rounded-lg" @click="decreaseProgress">- 10</button>
               </div>
             </div>
         </PreviewBlock>
