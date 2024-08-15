@@ -136,12 +136,16 @@ setInterval(() => {
     <template #content>
       <div class="flex flex-col gap-4">
         <PreviewBlock :template-code="componentCode" file-name="RadialProgressbar.vue">
-            <RadialProgressBarComponent :progress="progress + 10" />
-            <RadialProgressBarComponent :progress="progress + 20" />
-            <RadialProgressBarComponent :progress="progress + 40" />
-            <div class="flex flex-col gap-2">
-              <button class="bg-primary/20 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
-              <button class="bg-red-500/20 px-2 py-1 rounded-lg" @click="decreaseProgress">- 10</button>
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="flex gap-4">
+                <RadialProgressBarComponent :progress="progress + 10" />
+                <RadialProgressBarComponent :progress="progress + 20" />
+                <RadialProgressBarComponent :progress="progress + 40" />
+              </div>
+              <div class="flex flex-col gap-2">
+                <button class="bg-primary/20 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
+                <button class="bg-red-500/20 px-2 py-1 rounded-lg" @click="decreaseProgress">- 10</button>
+              </div>
             </div>
         </PreviewBlock>
         <h3 class="text-lg font-bold sublink">How to use?</h3>
