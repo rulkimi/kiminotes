@@ -22,6 +22,7 @@ export const useMainStore = defineStore('main', () => {
       name: 'Components',
       menus: [
         { name: 'Form Elements', path: '/form-elements' },
+        { name: 'Radial Progress Bar', path: '/radial-progress-bar' },
       ]
     },
   ];  
