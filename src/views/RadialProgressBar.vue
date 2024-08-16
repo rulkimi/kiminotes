@@ -12,22 +12,21 @@ onMounted(() => {
   sublinks.value = getSubLinks();
 });
 
-const progress = ref(0);
+const progress = [ref(10), ref(20), ref(40)];
 
-const increaseProgress = () => {
-  if (progress.value + 10 <= 100) {
-    progress.value += 10;
-  } else {
-    progress.value = 100;
-  }
+const adjustProgress = (amount) => {
+  progress.forEach((p) => {
+    p.value = Math.min(Math.max(p.value + amount, 0), 100);
+  });
 };
 
-const decreaseProgress = () => {
-  if (progress.value - 10 >= 0) {
-    progress.value -= 10;
-  } else {
-    progress.value = 0;
-  }
+const increaseProgress = () => adjustProgress(10);
+const decreaseProgress = () => adjustProgress(-10);
+
+const reset = () => {
+  progress[0].value = 10;
+  progress[1].value = 20;
+  progress[2].value = 40;
 };
 
 const componentCode = `<script setup>
@@ -138,13 +137,16 @@ setInterval(() => {
         <PreviewBlock :template-code="componentCode" file-name="RadialProgressbar.vue">
             <div class="flex flex-col md:flex-row gap-4">
               <div class="flex gap-4">
-                <RadialProgressBarComponent :size="70" :progress="progress + 10" />
-                <RadialProgressBarComponent :size="70" :progress="progress + 20" />
-                <RadialProgressBarComponent :size="70" :progress="progress + 40" />
+                <RadialProgressBarComponent :size="70" :progress="progress[0].value" />
+                <RadialProgressBarComponent :size="70" :progress="progress[1].value" />
+                <RadialProgressBarComponent :size="70" :progress="progress[2].value" />
               </div>
               <div class="flex flex-col gap-2">
-                <button class="bg-primary/20 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
-                <button v-if="progress" class="bg-red-500/20 px-2 py-1 rounded-lg" @click="decreaseProgress">- 10</button>
+                <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
+                <button class="bg-red-500/20 hover:bg-red-500/30 px-2 py-1 rounded-lg" @click="decreaseProgress">- 10</button>
+              </div>
+              <div>
+                <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg" @click="reset">Reset</button>
               </div>
             </div>
         </PreviewBlock>
