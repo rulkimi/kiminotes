@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { useThemeStore } from '@/store/themeStore';
 
 const props = defineProps({
   size: {
@@ -25,6 +26,9 @@ const clampedProgress = computed(() => Math.min(100, Math.max(0, props.progress)
 const circumference = computed(() => Number((2 * Math.PI * props.radius).toFixed(1)));
 const strokeDashOffset = computed(() => circumference.value - (circumference.value * clampedProgress.value) / 100);
 const viewBoxSize = computed(() => props.radius * 2 + strokeWidth * 2);
+
+const themeStore = useThemeStore();
+const textColor = computed(() => themeStore.isDarkMode ? '#F3F4F6' : '#000000');
 </script>
 
 <template>
@@ -56,6 +60,7 @@ const viewBoxSize = computed(() => props.radius * 2 + strokeWidth * 2);
         font-size="16"
         text-anchor="middle"
         alignment-baseline="middle"
+        :style="{ fill: textColor }"
       >
         {{ clampedProgress }}%
       </text>

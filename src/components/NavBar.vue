@@ -1,40 +1,11 @@
 <script setup>
 import { useRouter } from 'vue-router';
+import { useThemeStore } from '@/store/themeStore';
 import { useMainStore } from '@/store';
-import { ref, onMounted } from 'vue';
 
 const store = useMainStore();
+const themeStore = useThemeStore();
 const router = useRouter();
-
-const isDarkMode = ref(false);
-
-onMounted(() => {
-  const savedTheme = localStorage.getItem('theme');
-
-  if (savedTheme) {
-    isDarkMode.value = savedTheme === 'dark';
-  } else {
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    isDarkMode.value = prefersDarkScheme;
-  }
-
-  if (isDarkMode.value) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
-});
-
-const toggleDarkMode = () => {
-  isDarkMode.value = !isDarkMode.value;
-  if (isDarkMode.value) {
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
-  }
-};
 </script>
 
 
@@ -50,11 +21,11 @@ const toggleDarkMode = () => {
         <div class="flex gap-2 items-center">
           <!-- Moon/Sun image triggers dark/light mode -->
           <img
-            v-if="isDarkMode"
+            v-if="themeStore.isDarkMode"
             src="@/assets/sun.svg"
             alt="Toggle dark mode"
             width="24" 
-            @click="toggleDarkMode"
+            @click="themeStore.toggleDarkMode"
             class="cursor-pointer transition duration-200 hover:scale-110"
           >
           <img
@@ -62,11 +33,11 @@ const toggleDarkMode = () => {
             src="@/assets/moon.svg"
             alt="Toggle dark mode"
             width="24" 
-            @click="toggleDarkMode"
+            @click="themeStore.toggleDarkMode"
             class="cursor-pointer transition duration-200 hover:scale-110"
           >
           <a href="https://github.com/rulkimi/ui-playground" target="_blank" class="cursor-pointer transition duration-200 hover:scale-110">
-            <img v-if="isDarkMode" src="@/assets/github-mark-white.png" width="24" alt="kiminotes github" />
+            <img v-if="themeStore.isDarkMode" src="@/assets/github-mark-white.png" width="24" alt="kiminotes github" />
             <img v-else src="@/assets/github-mark.png" width="24" alt="kiminotes github" />
           </a>
         </div>
