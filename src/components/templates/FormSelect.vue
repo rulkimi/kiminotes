@@ -1,99 +1,3 @@
-<template>
-  <fieldset :class="width">
-    <div v-if="label" class="block mb-2">
-      <label
-        :for="id"
-        class="text-sm font-medium text-black/60"
-        :class="labelClass"
-      >
-        {{ label }}
-      </label>
-      <span v-if="required && !readonly" class="ml-1 text-red-500">*</span>
-    </div>
-    <div class="relative items-center" :class="isBlock ? 'flex' : 'inline-flex'">
-      <div v-if="hasPrependIcon" class="absolute left-3 text-gray-500 z-10">
-        <slot name="prepend-icon"></slot>
-      </div>
-      <div v-if="hasAppendIcon" class="absolute right-3 text-gray-500 z-10">
-        <slot name="append-icon"></slot>
-      </div>
-      <div v-if="!readonly" class="relative w-full">
-        <button
-          @click="toggleOptions"
-          :id="id"
-          class="rounded-lg block py-3 h-[50px] flex justify-between items-center bg-white"
-          :class="[
-            baseInputStyles,
-            conditionalInputStyles,
-          ]"
-          :disabled="disabled"
-        >
-          <div class="text-start truncate mt-1">
-            <span v-if="displayValue">
-              <span v-if="prefixDisplayValue">{{ prefixDisplayValue }}</span>
-              {{ displayValue }}
-              <span v-if="suffixDisplayValue">suffixDisplayValue</span>
-            </span>
-            <span v-else class="text-gray-400">{{ placeholder }}</span>
-          </div>
-          <font-awesome-icon
-            :icon="['fas', 'chevron-down']"
-            class="transition-transform duration-200"
-            :class="{
-              'rotate-180': optionsOpen
-            }"
-          />
-        </button>
-        <transition name="dropdown-fade">
-          <div
-            v-if="optionsOpen"
-            class="absolute bg-white border shadow-lg w-full z-10 rounded-lg max-h-[200px] overflow-auto"
-            :class="optionsPositionClass"
-          >
-            <div v-if="options.length === 0" class="p-3 h-[50px] flex justify-center items-center text-gray-500">
-              {{ noOptionsMessage }}
-            </div>
-            <div
-              v-else
-              v-for="(option, index) in options"
-              :key="optionValue ? option[optionValue] : option"
-              class="p-3 h-[50px] cursor-pointer hover:bg-gray-200 flex justify-between items-center"
-              @click="updateValueByList(optionValue ? option[optionValue] : option, optionLabel ? option[optionLabel] : option)"
-              :class="{
-                'rounded-t-lg': index === 0, 
-                'rounded-b-lg': index === options.length - 1
-              }"
-            >
-              {{ optionLabel ? option[optionLabel] : option }}
-            </div>
-          </div>
-        </transition>
-      </div>
-      <input
-        v-else
-        :id="id"
-        v-model="displayValue"
-        class="block py-3 h-[50px] outline-none"
-        :class="[
-          baseInputStyles,
-          conditionalInputStyles
-        ]"
-        readonly
-        :disabled="disabled"
-      >
-    </div>
-    <transition name="shake-fade">
-      <small
-        v-if="errorMessage"
-        class="block text-red-400"
-        :class="{ 'opacity-50' : disabled }"
-      >
-        {{ errorMessage }}
-      </small>
-    </transition>
-  </fieldset>
-</template>
-
 <script setup>
 import { ref, defineEmits, watch, computed, useSlots } from 'vue';
 
@@ -262,6 +166,102 @@ const updateValueByList = (value, label) => {
   optionsOpen.value = false;
 }
 </script>
+
+<template>
+  <fieldset :class="width">
+    <div v-if="label" class="block mb-2">
+      <label
+        :for="id"
+        class="text-sm font-medium text-black/60"
+        :class="labelClass"
+      >
+        {{ label }}
+      </label>
+      <span v-if="required && !readonly" class="ml-1 text-red-500">*</span>
+    </div>
+    <div class="relative items-center" :class="isBlock ? 'flex' : 'inline-flex'">
+      <div v-if="hasPrependIcon" class="absolute left-3 text-gray-500 z-10">
+        <slot name="prepend-icon"></slot>
+      </div>
+      <div v-if="hasAppendIcon" class="absolute right-3 text-gray-500 z-10">
+        <slot name="append-icon"></slot>
+      </div>
+      <div v-if="!readonly" class="relative w-full">
+        <button
+          @click="toggleOptions"
+          :id="id"
+          class="rounded-lg block py-3 h-[50px] flex justify-between items-center bg-white"
+          :class="[
+            baseInputStyles,
+            conditionalInputStyles,
+          ]"
+          :disabled="disabled"
+        >
+          <div class="text-start truncate mt-1">
+            <span v-if="displayValue">
+              <span v-if="prefixDisplayValue">{{ prefixDisplayValue }}</span>
+              {{ displayValue }}
+              <span v-if="suffixDisplayValue">suffixDisplayValue</span>
+            </span>
+            <span v-else class="text-gray-400">{{ placeholder }}</span>
+          </div>
+          <font-awesome-icon
+            :icon="['fas', 'chevron-down']"
+            class="transition-transform duration-200"
+            :class="{
+              'rotate-180': optionsOpen
+            }"
+          />
+        </button>
+        <transition name="dropdown-fade">
+          <div
+            v-if="optionsOpen"
+            class="absolute bg-white border shadow-lg w-full z-10 rounded-lg max-h-[200px] overflow-auto"
+            :class="optionsPositionClass"
+          >
+            <div v-if="options.length === 0" class="p-3 h-[50px] flex justify-center items-center text-gray-500">
+              {{ noOptionsMessage }}
+            </div>
+            <div
+              v-else
+              v-for="(option, index) in options"
+              :key="optionValue ? option[optionValue] : option"
+              class="p-3 h-[50px] cursor-pointer hover:bg-gray-200 flex justify-between items-center"
+              @click="updateValueByList(optionValue ? option[optionValue] : option, optionLabel ? option[optionLabel] : option)"
+              :class="{
+                'rounded-t-lg': index === 0, 
+                'rounded-b-lg': index === options.length - 1
+              }"
+            >
+              {{ optionLabel ? option[optionLabel] : option }}
+            </div>
+          </div>
+        </transition>
+      </div>
+      <input
+        v-else
+        :id="id"
+        v-model="displayValue"
+        class="block py-3 h-[50px] outline-none"
+        :class="[
+          baseInputStyles,
+          conditionalInputStyles
+        ]"
+        readonly
+        :disabled="disabled"
+      >
+    </div>
+    <transition name="shake-fade">
+      <small
+        v-if="errorMessage"
+        class="block text-red-400"
+        :class="{ 'opacity-50' : disabled }"
+      >
+        {{ errorMessage }}
+      </small>
+    </transition>
+  </fieldset>
+</template>
 
 <style scoped>
 select {

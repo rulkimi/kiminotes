@@ -1,7 +1,7 @@
 <script setup>
-import PageLayout from '../layout/PageLayout.vue';
-import PreviewBlock from '../components/templates/PreviewBlock.vue';
-import { getSubLinks } from '../utils';
+import PageLayout from '@/layout/PageLayout.vue';
+import PreviewBlock from '@/components/templates/PreviewBlock.vue';
+import { getSubLinks } from '@/utils';
 
 import { ref, onMounted } from 'vue';
 

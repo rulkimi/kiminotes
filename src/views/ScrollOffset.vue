@@ -1,6 +1,6 @@
 <script setup>
-import PageLayout from '../layout/PageLayout.vue';
-import PreviewBlock from '../components/templates/PreviewBlock.vue';
+import PageLayout from '@/layout/PageLayout.vue';
+import PreviewBlock from '@/components/templates/PreviewBlock.vue';
 
 import { ref } from 'vue';
 

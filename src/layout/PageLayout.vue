@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { useMainStore } from '../store'; // Adjust the path as needed
+import { useMainStore } from '@/store'; // Adjust the path as needed
 
 defineProps({
   sublinks: Array

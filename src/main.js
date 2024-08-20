@@ -1,10 +1,10 @@
 import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
+import App from '@/App.vue';
+import router from '@/router';
 import { createPinia } from 'pinia';
-import { highlightDirective } from './directives';
-import { useMainStore } from './store';
-import './style.css';
+import { highlightDirective } from '@/directives';
+import { useMainStore } from '@/store';
+import '@/style.css';
 
 const app = createApp(App);
 const pinia = createPinia();

@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router'
-import { useMainStore } from '../store';
+import { useMainStore } from '@/store';
 const store = useMainStore();
 const router = useRouter();
 </script>
