@@ -1,0 +1,1 @@
+import{P as t}from"./PageLayout-CZaoL2Ic.js";import{c as o,w as a,o as e,a as r}from"./index-C-fJ2XrK.js";const m={__name:"ScrollAnimation",setup(c){return(s,n)=>(e(),o(t,null,{subtitle:a(()=>[r(" Smooth scroll animation. ")]),_:1}))}};export{m as default};
