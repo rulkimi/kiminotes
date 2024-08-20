@@ -92,7 +92,7 @@ const styleCode = ref(`.list-enter-from, .list-leave-to {
           <transition-group class="relative flex flex-col gap-1 w-[150px]" tag="ul">
             <span key="title">No transition</span>
             <li
-              class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
+              class="flex items-center justify-between bg-gray-200 dark:bg-slate-900 rounded-lg px-2 py-1"
               v-for="item in items"
               :key="item.id"
             >
@@ -103,7 +103,7 @@ const styleCode = ref(`.list-enter-from, .list-leave-to {
           <transition-group class="relative flex flex-col gap-1 w-[150px]" name="list" tag="ul" appear>
             <span key="title" class="text-nowrap"><span class="font-mono">appear</span> attribute</span>
             <li
-              class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
+              class="flex items-center justify-between bg-gray-200 dark:bg-slate-900 rounded-lg px-2 py-1"
               v-for="item in itemsThree"
               :key="item.id"
             >
@@ -114,7 +114,7 @@ const styleCode = ref(`.list-enter-from, .list-leave-to {
           <transition-group class="relative flex flex-col gap-1 w-[150px]" name="list" tag="ul">
             <span key="title">Transition</span>
             <li
-              class="flex items-center justify-between bg-gray-200 rounded-lg px-2 py-1"
+              class="flex items-center justify-between bg-gray-200 dark:bg-slate-900 rounded-lg px-2 py-1"
               v-for="item in itemsTwo"
               :key="item.id"
             >

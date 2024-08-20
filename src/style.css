@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {  
+@layer base {
+  :root {
+    --text: 50, 47, 47;
+    --background: 245, 245, 245;
+  }
+  .dark {
+    --text: 241, 235, 228; 
+    --background: 31, 41, 55;
+  }  
+
   body {
     @apply bg-background m-0 min-w-[320px] min-h-screen text-text text-sm;
   }

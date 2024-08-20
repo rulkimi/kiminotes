@@ -30,7 +30,7 @@ const hasDisplay = computed(() => !!slots.default);
 
 <template>
   <div>
-    <div v-if="hasDisplay" class="bg-grid p-4 flex items-start justify-center border-t border-x rounded-t-lg">
+    <div v-if="hasDisplay" class="bg-grid p-4 flex items-start justify-center border-t border-x dark:border-slate-700 rounded-t-lg">
       <slot></slot>
     </div>
 
@@ -38,14 +38,14 @@ const hasDisplay = computed(() => !!slots.default);
       <!-- Tabs -->
       <div
         v-if="fileName"
-        class="flex space-x-4 p-2 border-t border-x"
+        class="flex space-x-4 p-2 border-t border-x dark:border-slate-700"
         :class="{ 'rounded-t-lg' : !hasDisplay }"
       >
         <div class="text-primary font-semibold">{{ fileName }}</div>
       </div>
       <div
         v-else
-        class="flex space-x-4 p-2 border-t border-x"
+        class="flex space-x-4 p-2 border-t border-x dark:border-slate-700"
         :class="{ 'rounded-t-lg' : !hasDisplay }"
       >
         <button

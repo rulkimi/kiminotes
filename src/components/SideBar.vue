@@ -15,7 +15,7 @@ const clickLink = path => {
       'translate-x-0': store.isSidebarOpen,
       '-translate-x-full': !store.isSidebarOpen
     }"
-    class="fixed top-0 left-0 w-[300px] h-full bg-background transition-transform transform md:translate-x-0 md:relative md:sticky md:top-[3.5rem] md:h-[calc(100vh-3.5rem)] border-r overflow-auto text-nowrap z-10"
+    class="fixed top-0 left-0 w-[300px] h-full bg-background transition-transform transform md:translate-x-0 md:relative md:sticky md:top-[3.5rem] md:h-[calc(100vh-3.5rem)] border-r dark:border-slate-700 overflow-auto text-nowrap z-10"
   >
     <div class="w-full p-6">
 
@@ -29,8 +29,8 @@ const clickLink = path => {
             <li
               v-for="menu in section.menus"
               :key="menu.path"
-              class="pl-4 border-l"
-              :class="{ 'text-primary border-primary font-semibold' : menu.path === store.currentPath }"
+              class="pl-4 border-l dark:border-slate-700"
+              :class="{ 'text-primary border-primary dark:border-primary font-semibold' : menu.path === store.currentPath }"
             >
               <router-link
                 :to="menu.path"

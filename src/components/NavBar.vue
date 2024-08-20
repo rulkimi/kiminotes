@@ -40,7 +40,7 @@ const toggleDarkMode = () => {
 
 <template>
   <!-- desktop view -->
-  <div class="sticky top-0 border-b h-14 bg-background/90 z-10">
+  <div class="sticky top-0 border-b dark:border-slate-700 h-14 bg-background/90 z-10">
     <div class="max-w-[1280px] mx-auto h-full p-4">
       <div class="flex justify-between">
         <div class="flex gap-2 text-lg font-bold" @click="router.push({ path: '/' })">
@@ -66,7 +66,8 @@ const toggleDarkMode = () => {
             class="cursor-pointer transition duration-200 hover:scale-110"
           >
           <a href="https://github.com/rulkimi/ui-playground" target="_blank" class="cursor-pointer transition duration-200 hover:scale-110">
-            <img src="@/assets/github-mark.png" width="24" alt="kiminotes github" />
+            <img v-if="isDarkMode" src="@/assets/github-mark-white.png" width="24" alt="kiminotes github" />
+            <img v-else src="@/assets/github-mark.png" width="24" alt="kiminotes github" />
           </a>
         </div>
       </div>
@@ -74,7 +75,7 @@ const toggleDarkMode = () => {
   </div>
 
   <!-- mobile view -->
-  <div class="sticky top-[3.5rem] md:hidden border-b h-14 bg-background/90 z-10">
+  <div class="sticky top-[3.5rem] md:hidden border-b dark:border-slate-700 h-14 bg-background/90 z-10">
     <div class="max-w-[1280px] mx-auto h-full p-4">
       <div class="flex items-center gap-4">
         <button @click="store.toggleSidebar" aria-label="Toggle sidebar">
