@@ -10,6 +10,7 @@ const routes = [
   { path: '/scroll-offset', component: () => import('../views/ScrollOffset.vue') },
   { path: '/web-history', component: () => import('../views/WebHistory.vue') },
   { path: '/radial-progress-bar', component: () => import('../views/RadialProgressBar.vue') },
+  { path: '/path-aliasing', component: () => import('../views/PathAliasing.vue') },
 ]
 
 const router = createRouter({

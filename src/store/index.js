@@ -25,6 +25,12 @@ export const useMainStore = defineStore('main', () => {
         { name: 'Radial Progress Bar', path: '/radial-progress-bar' },
       ]
     },
+    {
+      name: 'Misc.',
+      menus: [
+        { name: 'Path Aliasing (vite)', path: '/path-aliasing' },
+      ]
+    },
   ];  
 
   function setCurrentPath(path) {
