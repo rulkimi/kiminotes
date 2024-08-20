@@ -29,6 +29,7 @@ export const useMainStore = defineStore('main', () => {
       name: 'Misc.',
       menus: [
         { name: 'Path Aliasing (vite)', path: '/path-aliasing' },
+        { name: 'DAX Code', path: '/dax-code' },
       ]
     },
   ];  

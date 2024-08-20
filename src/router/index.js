@@ -11,6 +11,7 @@ const routes = [
   { path: '/web-history', component: () => import('../views/WebHistory.vue') },
   { path: '/radial-progress-bar', component: () => import('../views/RadialProgressBar.vue') },
   { path: '/path-aliasing', component: () => import('../views/PathAliasing.vue') },
+  { path: '/dax-code', component: () => import('../views/DAXCode.vue') },
 ]
 
 const router = createRouter({
