@@ -9,7 +9,7 @@ export default defineConfig({
   base: "/ui-playground/",
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url));
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
 })
