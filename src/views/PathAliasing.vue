@@ -17,7 +17,7 @@ const aliasConfigCode = ref(`resolve: {
   }
 }`);
 
-const exampleImportCode = ref(`import MyComponent from '@/components/MyComponent.vue';`);
+const exampleImportCode = ref(`import MyComponent from '../../components/MyComponent.vue';`);
 const exampleImportCodeWithAlias = ref(`import MyComponent from '@/components/MyComponent.vue';`);
 </script>
 

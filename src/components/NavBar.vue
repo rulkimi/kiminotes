@@ -9,9 +9,14 @@ const router = useRouter();
   <!-- desktop view -->
   <div class="sticky top-0 border-b h-14 bg-background/90 z-10">
     <div class="max-w-[1280px] mx-auto h-full p-4">
-      <div class="flex gap-2 text-lg font-bold" @click="router.push({ path : '/'})">
-        <img src="/kiminotes.svg" alt="kiminotes logo" width="20">
-        <span>kiminotes</span>
+      <div class="flex justify-between">
+        <div class="flex gap-2 text-lg font-bold" @click="router.push({ path : '/'})">
+          <img src="/kiminotes.svg" alt="kiminotes logo" width="20">
+          <span>kiminotes</span>
+        </div>
+        <a href="https://github.com/rulkimi/ui-playground" target="_blank" class="cursor-pointer transition duration-200 hover:scale-110">
+          <img src="@/assets/github-mark.png" width="24" alt="kiminotes github" />
+        </a>
       </div>
     </div>
   </div>
