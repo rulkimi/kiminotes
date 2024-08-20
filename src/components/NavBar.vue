@@ -6,15 +6,22 @@ import { ref, onMounted } from 'vue';
 const store = useMainStore();
 const router = useRouter();
 
-// Dark mode management
 const isDarkMode = ref(false);
 
 onMounted(() => {
-  // Check if the user has a saved theme preference
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    isDarkMode.value = true;
+
+  if (savedTheme) {
+    isDarkMode.value = savedTheme === 'dark';
+  } else {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    isDarkMode.value = prefersDarkScheme;
+  }
+
+  if (isDarkMode.value) {
     document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
   }
 });
 
@@ -30,6 +37,7 @@ const toggleDarkMode = () => {
 };
 </script>
 
+
 <template>
   <!-- desktop view -->
   <div class="sticky top-0 border-b h-14 bg-background/90 z-10">
@@ -43,7 +51,7 @@ const toggleDarkMode = () => {
           <!-- Moon/Sun image triggers dark/light mode -->
           <img
             v-if="isDarkMode"
-            src="@/assets/moon.svg"
+            src="@/assets/sun.svg"
             alt="Toggle dark mode"
             width="24" 
             @click="toggleDarkMode"
@@ -51,7 +59,7 @@ const toggleDarkMode = () => {
           >
           <img
             v-else
-            src="@/assets/sun.svg"
+            src="@/assets/moon.svg"
             alt="Toggle dark mode"
             width="24" 
             @click="toggleDarkMode"
