@@ -1,7 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router';
-import { useThemeStore } from '@/store/themeStore';
-import { useMainStore } from '@/store';
+import { useMainStore, useThemeStore } from '@/store';
 
 const store = useMainStore();
 const themeStore = useThemeStore();

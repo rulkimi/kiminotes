@@ -1,7 +1,6 @@
 <script setup>
 import PageLayout from '@/layout/PageLayout.vue';
-import RadialProgressBarComponent from '@/components/templates/RadialProgressBarComponent.vue';
-import PreviewBlock from '@/components/templates/PreviewBlock.vue';
+import { RadialProgressBarComponent, PreviewBlock } from '@/components/templates';
 
 import { getSubLinks } from '@/utils';
 import { ref, onMounted } from 'vue';
