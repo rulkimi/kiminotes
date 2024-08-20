@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        text: "rgb(var(--text))",
-        background: "rgb(var(--background))",
+        text: "rgb(var(--text), <alpha-value>)",
+        background: "rgb(var(--background), <alpha-value>)",
         primary: "rgb(48, 206, 177, <alpha-value>)"
       }
     },
