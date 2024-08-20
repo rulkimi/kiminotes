@@ -155,7 +155,16 @@ const conditionalInputStyles = computed(() => {
 }
 
 .no-arrows {
-  -moz-appearance: textfield;
+  -moz-appearance: textfield;  /* Firefox */
+  -webkit-appearance: none;    /* Chrome, Safari, Opera */
+  appearance: none;            /* Standard */
+}
+
+/* Hides the arrows in Internet Explorer and Edge */
+.no-arrows::-webkit-inner-spin-button,
+.no-arrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .shake-fade-enter-active {
