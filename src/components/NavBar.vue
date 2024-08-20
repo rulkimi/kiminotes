@@ -1,8 +1,33 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router';
 import { useMainStore } from '@/store';
+import { ref, onMounted } from 'vue';
+
 const store = useMainStore();
 const router = useRouter();
+
+// Dark mode management
+const isDarkMode = ref(false);
+
+onMounted(() => {
+  // Check if the user has a saved theme preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    isDarkMode.value = true;
+    document.documentElement.classList.add('dark');
+  }
+});
+
+const toggleDarkMode = () => {
+  isDarkMode.value = !isDarkMode.value;
+  if (isDarkMode.value) {
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  }
+};
 </script>
 
 <template>
@@ -10,13 +35,32 @@ const router = useRouter();
   <div class="sticky top-0 border-b h-14 bg-background/90 z-10">
     <div class="max-w-[1280px] mx-auto h-full p-4">
       <div class="flex justify-between">
-        <div class="flex gap-2 text-lg font-bold" @click="router.push({ path : '/'})">
+        <div class="flex gap-2 text-lg font-bold" @click="router.push({ path: '/' })">
           <img src="/kiminotes.svg" alt="kiminotes logo" width="20">
           <span>kiminotes</span>
         </div>
-        <a href="https://github.com/rulkimi/ui-playground" target="_blank" class="cursor-pointer transition duration-200 hover:scale-110">
-          <img src="@/assets/github-mark.png" width="24" alt="kiminotes github" />
-        </a>
+        <div class="flex gap-2 items-center">
+          <!-- Moon/Sun image triggers dark/light mode -->
+          <img
+            v-if="isDarkMode"
+            src="@/assets/moon.svg"
+            alt="Toggle dark mode"
+            width="24" 
+            @click="toggleDarkMode"
+            class="cursor-pointer transition duration-200 hover:scale-110"
+          >
+          <img
+            v-else
+            src="@/assets/sun.svg"
+            alt="Toggle dark mode"
+            width="24" 
+            @click="toggleDarkMode"
+            class="cursor-pointer transition duration-200 hover:scale-110"
+          >
+          <a href="https://github.com/rulkimi/ui-playground" target="_blank" class="cursor-pointer transition duration-200 hover:scale-110">
+            <img src="@/assets/github-mark.png" width="24" alt="kiminotes github" />
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -33,7 +77,7 @@ const router = useRouter();
         <div class="flex items-center gap-2">
           <span>{{ store.currentSection?.name }}</span>
           <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 2L6 5L3 8" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 2L6 5L3 8" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           <span class="font-semibold">{{ store.currentMenu?.name }}</span>
         </div>
@@ -41,3 +85,4 @@ const router = useRouter();
     </div>
   </div>
 </template>
+
