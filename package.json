@@ -1,9 +1,9 @@
 {
-  "name": "ui-playground",
+  "name": "kiminotes",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://rulkimi.github.io/ui-playground/",
+  "homepage": "https://rulkimi.github.io/kiminotes/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

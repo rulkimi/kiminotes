@@ -35,7 +35,7 @@ const router = useRouter();
             @click="themeStore.toggleDarkMode"
             class="cursor-pointer transition duration-200 hover:scale-110"
           >
-          <a href="https://github.com/rulkimi/ui-playground" target="_blank" class="cursor-pointer transition duration-200 hover:scale-110">
+          <a href="https://github.com/rulkimi/kiminotes" target="_blank" class="cursor-pointer transition duration-200 hover:scale-110">
             <img v-if="themeStore.isDarkMode" src="@/assets/github-mark-white.png" width="24" alt="kiminotes github" />
             <img v-else src="@/assets/github-mark.png" width="24" alt="kiminotes github" />
           </a>
