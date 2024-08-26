@@ -13,7 +13,7 @@ const router = useRouter();
   <div class="sticky top-0 border-b dark:border-slate-700 h-14 bg-background/90 z-10">
     <div class="max-w-[1280px] mx-auto h-full p-4">
       <div class="flex justify-between">
-        <div class="flex gap- text-lg font-bold" @click="router.push({ path: '/' })">
+        <div class="flex gap-2 text-lg font-bold" @click="router.push({ path: '/' })">
           <img src="/kiminotes.svg" alt="kiminotes logo" width="20">
           <span>kiminotes</span>
         </div>
