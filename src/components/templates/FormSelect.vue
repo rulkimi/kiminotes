@@ -172,7 +172,7 @@ const updateValueByList = (value, label) => {
     <div v-if="label" class="block mb-2">
       <label
         :for="id"
-        class="text-sm font-medium text-black/60"
+        class="text-sm font-medium text-black/60 dark:text-white/60"
         :class="labelClass"
       >
         {{ label }}
