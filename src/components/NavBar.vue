@@ -53,13 +53,14 @@ const router = useRouter();
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
-        <div class="flex items-center gap-2">
+        <div v-if="store.currentSection" class="flex items-center gap-2">
           <span>{{ store.currentSection?.name }}</span>
           <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 2L6 5L3 8" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           <span class="font-semibold">{{ store.currentMenu?.name }}</span>
         </div>
+        <div v-else>Home</div>
       </div>
     </div>
   </div>
