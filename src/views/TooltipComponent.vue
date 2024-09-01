@@ -6,7 +6,7 @@ import { Tooltip } from '@/components/templates';
   Testing the
   <Tooltip theme="light">
     <template #content>
-      
+      <font-awesome-icon :icon="['fas', 'times']" />
       HEHEHE
     </template>
     tooltip
