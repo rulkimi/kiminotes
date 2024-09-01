@@ -133,6 +133,8 @@ setInterval(() => {
     </template>
     <template #content>
       <div class="flex flex-col gap-4">
+
+        <h3 class="text-lg font-bold sublink">The component code</h3>
         <PreviewBlock :template-code="componentCode" file-name="RadialProgressbar.vue">
           <div class="flex flex-col md:flex-row gap-4">
             <div class="flex gap-4">
@@ -149,9 +151,11 @@ setInterval(() => {
             </div>
           </div>
         </PreviewBlock>
+
         <h3 class="text-lg font-bold sublink">How to use?</h3>
         <p>Import in the component you want to use and configure the props.</p>
         <PreviewBlock :template-code="exampleUsageCode" file-name="App.vue" />
+        
       </div>
     </template>
   </PageLayout>
