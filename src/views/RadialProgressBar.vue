@@ -134,20 +134,20 @@ setInterval(() => {
     <template #content>
       <div class="flex flex-col gap-4">
         <PreviewBlock :template-code="componentCode" file-name="RadialProgressbar.vue">
-            <div class="flex flex-col md:flex-row gap-4">
-              <div class="flex gap-4">
-                <RadialProgressBarComponent :size="70" :progress="progress[0].value" />
-                <RadialProgressBarComponent :size="70" :progress="progress[1].value" />
-                <RadialProgressBarComponent :size="70" :progress="progress[2].value" />
-              </div>
-              <div class="flex flex-col gap-2">
-                <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
-                <button class="bg-red-500/20 hover:bg-red-500/30 px-2 py-1 rounded-lg" @click="decreaseProgress">- 10</button>
-              </div>
-              <div>
-                <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg" @click="reset">Reset</button>
-              </div>
+          <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex gap-4">
+              <RadialProgressBarComponent :size="70" :progress="progress[0].value" />
+              <RadialProgressBarComponent :size="70" :progress="progress[1].value" />
+              <RadialProgressBarComponent :size="70" :progress="progress[2].value" />
             </div>
+            <div class="flex flex-col gap-2">
+              <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
+              <button class="bg-red-500/20 hover:bg-red-500/30 px-2 py-1 rounded-lg" @click="decreaseProgress">- 10</button>
+            </div>
+            <div>
+              <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg" @click="reset">Reset</button>
+            </div>
+          </div>
         </PreviewBlock>
         <h3 class="text-lg font-bold sublink">How to use?</h3>
         <p>Import in the component you want to use and configure the props.</p>
