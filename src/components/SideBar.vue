@@ -30,7 +30,7 @@ const clickLink = path => {
               v-for="menu in section.menus"
               :key="menu.path"
               class="pl-4 border-l dark:border-slate-700"
-              :class="{ 'text-primary border-primary dark:border-primary font-semibold' : menu.path === store.currentPath }"
+              :class="{ 'text-primary border-primary dark:!border-primary font-semibold' : menu.path === store.currentPath }"
             >
               <router-link
                 :to="menu.path"
