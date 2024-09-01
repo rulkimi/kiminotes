@@ -3,6 +3,12 @@ import { Tooltip } from '@/components/templates';
 </script>
 
 <template>
-  Tooltip component
-  <Tooltip />
+  Testing the
+  <Tooltip theme="light">
+    <template #content>
+      
+      HEHEHE
+    </template>
+    tooltip
+  </Tooltip>
 </template>
