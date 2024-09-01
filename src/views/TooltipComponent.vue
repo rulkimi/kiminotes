@@ -1,8 +1,15 @@
 <script setup>
-import { Tooltip, PreviewBlock } from '@/components/templates';
+import { Tooltip, PreviewBlock, FormSelect } from '@/components/templates';
 import PageLayout from '@/layout/PageLayout.vue';
 
-import { ref } from 'vue';
+import { getSubLinks } from '@/utils';
+import { ref, onMounted } from 'vue';
+
+const sublinks = ref([]);
+
+onMounted(() => {
+  sublinks.value = getSubLinks();
+});
 
 const tooltipCode = ref(`<script setup>
 import { ref, nextTick } from 'vue';
@@ -125,17 +132,90 @@ const hideTip = () => {
   </div>
 </template>
 `);
+
+const theme = ref('dark');
+
+const directionCode = ref(`<template>
+  <Tooltip content="I appear on left" direction="left" theme="${theme.value}">
+    <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+  </Tooltip>
+  <Tooltip content="I appear on right" direction="right" theme="${theme.value}">
+    <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+  </Tooltip>
+  <Tooltip content="I appear on top!" direction="top" theme="${theme.value}">
+    <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+  </Tooltip>
+  <Tooltip content="I appear on bottom!" direction="bottom" theme="${theme.value}">
+    <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+  </Tooltip>
+</template>
+`);
 </script>
 
 <template>
-  <PageLayout>
+  <PageLayout :sublinks="sublinks">
     <template #subtitle>
       Tooltip component with Tailwind CSS.
     </template>
     <template #content>
-      Testing the
+
+      <h3 class="text-lg font-bold sublink">How to use?</h3>
+      <p>Import in the component you want to use and configure the props.</p>
       <PreviewBlock :template-code="tooltipCode" file-name="Tooltip.vue">
-        Test
+        <div class="grid grid-cols-2 gap-2">
+          <Tooltip content="I'm hovered" >
+            <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+          </Tooltip>
+        </div>
+      </PreviewBlock>
+
+      <h3 class="text-lg font-bold sublink">How to use?</h3>
+      <p>Import in the component you want to use and configure the props.</p>
+      <PreviewBlock :template-code="directionCode" file-name="Tooltip.vue">
+        <div class="flex gap-6">
+          <div class="grid grid-cols-2 gap-2">
+            <Tooltip content="I appear on left" direction="left" :theme="theme">
+              <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+            </Tooltip>
+            <Tooltip content="I appear on right" direction="right" :theme="theme">
+              <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+            </Tooltip>
+            <Tooltip content="I appear on top!" direction="top" :theme="theme">
+              <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+            </Tooltip>
+            <Tooltip content="I appear on bottom!" direction="bottom" :theme="theme">
+              <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+            </Tooltip>
+          </div>
+          <div>
+            <span>Theme:</span>
+            <div class="flex items-center space-x-4">
+              <!-- Light Theme Radio Button -->
+              <label for="theme-light" class="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="theme-light"
+                  value="light"
+                  v-model="theme"
+                  class="form-radio"
+                />
+                <span>Light</span>
+              </label>
+
+              <!-- Dark Theme Radio Button -->
+              <label for="theme-dark" class="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="theme-dark"
+                  value="dark"
+                  v-model="theme"
+                  class="form-radio"
+                />
+                <span>Dark</span>
+              </label>
+            </div>
+          </div>
+        </div>
       </PreviewBlock>
     </template>
   </PageLayout>
