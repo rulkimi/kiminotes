@@ -12,6 +12,7 @@ const routes = [
   { path: '/radial-progress-bar', component: () => import('../views/RadialProgressBar.vue') },
   { path: '/path-aliasing', component: () => import('../views/PathAliasing.vue') },
   { path: '/dax-code', component: () => import('../views/DAXCode.vue') },
+  { path: '/tooltip', component: () => import('../views/TooltipComponent.vue') },
 ]
 
 const router = createRouter({
