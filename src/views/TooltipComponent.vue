@@ -150,10 +150,10 @@ const hideTip = () => {
       <div
         v-if="active"
         :class="[
-          'tooltip-tip fixed z-50 text-start text-sm transform p-2 border shadow-md rounded-lg',
+          'tooltip-tip fixed z-50 text-start text-sm transform p-2 shadow-md rounded-lg',
           width,
           direction,
-          customStyles || (theme === 'dark' ? 'bg-black text-white font-light border-black' : 'bg-white border-gray-300 text-black')
+          customStyles || (theme === 'dark' ? 'bg-black text-white font-light border-black' : 'bg-white border border-gray-300 text-black')
         ]"
       >
         <div
