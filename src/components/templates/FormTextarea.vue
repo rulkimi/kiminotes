@@ -1,7 +1,7 @@
 <script setup>
 import { defineEmits, computed, useSlots } from 'vue';
 
-const emit = defineEmits(['update:modelValue', 'change']);
+const emit = defineEmits(['update:modelValue', 'input', 'change']);
 
 const props = defineProps({
   modelValue: {
@@ -76,6 +76,7 @@ const props = defineProps({
 
 const updateValue = event => {
   emit('update:modelValue', event.target.value);
+  emit('input', event.target.value);
 }
 
 const onChange = event => {
@@ -141,7 +142,7 @@ const currentCharCount = computed(() => {
         :value="modelValue"
         @input="updateValue($event)"
         @change="onChange($event)"
-        class="block py-3 outline-none bg-input-color"
+        class="block py-3 outline-none text-black"
         :class="[
           baseInputStyles,
           conditionalInputStyles
