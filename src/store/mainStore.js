@@ -9,7 +9,7 @@ export const useMainStore = defineStore('main', () => {
       menus: [
         { name: 'Transition for List', path: '/list-transition' },
         { name: 'Scroll Offset', path: '/scroll-offset' },
-        { name: 'Scroll Animation', path: '/scroll-animation' },
+        // { name: 'Scroll Animation', path: '/scroll-animation' },
       ]
     },
     {
