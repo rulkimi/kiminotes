@@ -66,8 +66,8 @@ const showTip = () => {
           left: `${Math.min(left + slotElement.offsetWidth + 10, window.innerWidth - tooltip.offsetWidth)}px` // Prevent overflow on the right
         },
       };
-
-      // Check for overflow and adjust position
+      
+      // check for overflow and adjust position
       const overflowCheck = (position) => {
         const space = {
           top: top - tooltip.offsetHeight - 10,
@@ -90,12 +90,12 @@ const showTip = () => {
           right: 'left'
         };
 
-        // Check for both left and right overflow
+        // check for both left and right overflow
         if (isOverflowing.left && isOverflowing.right) {
           return space.top > space.bottom ? 'top' : 'bottom';
         }
 
-        // Check for both top and bottom overflow
+        // check for both top and bottom overflow
         if (isOverflowing.top && isOverflowing.bottom) {
           return space.left > space.right ? 'right' : 'left';
         }
