@@ -199,9 +199,9 @@ const updateValueByList = (value, label) => {
         >
           <div class="text-start truncate mt-1">
             <span v-if="displayValue">
-              <span v-if="prefixDisplayValue">{{ prefixDisplayValue }}</span>
-              {{ displayValue }}
-              <span v-if="suffixDisplayValue">suffixDisplayValue</span>
+              <span v-if="props.prefixDisplayValue">{{ props.prefixDisplayValue }}</span>
+              <span class="text-black">{{ displayValue }}</span>
+              <span v-if="props.suffixDisplayValue">suffixDisplayValue</span>
             </span>
             <span v-else class="text-gray-400">{{ placeholder }}</span>
           </div>
@@ -219,12 +219,12 @@ const updateValueByList = (value, label) => {
             class="absolute bg-white border shadow-lg w-full z-10 rounded-lg max-h-[200px] overflow-auto"
             :class="optionsPositionClass"
           >
-            <div v-if="options.length === 0" class="p-3 h-[50px] flex justify-center items-center text-gray-500">
+            <div v-if="props.options.length === 0" class="p-3 h-[50px] flex justify-center items-center text-gray-500">
               {{ noOptionsMessage }}
             </div>
             <div
               v-else
-              v-for="(option, index) in options"
+              v-for="(option, index) in props.options"
               :key="optionValue ? option[optionValue] : option"
               class="p-3 h-[50px] cursor-pointer hover:bg-gray-200 flex justify-between items-center"
               @click="updateValueByList(optionValue ? option[optionValue] : option, optionLabel ? option[optionLabel] : option)"
@@ -233,7 +233,7 @@ const updateValueByList = (value, label) => {
                 'rounded-b-lg': index === options.length - 1
               }"
             >
-              {{ optionLabel ? option[optionLabel] : option }}
+              <span class="text-black">{{ optionLabel ? option[optionLabel] : option }}</span>
             </div>
           </div>
         </transition>
