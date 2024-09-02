@@ -26,12 +26,17 @@ const props = defineProps({
   width: {
     type: String,
     default: 'max-w-[500px]'
+  },
+  noArrow: {
+    type: Boolean,
+    default: false,
   }
 });
 
 const active = ref(false);
 const timeout = ref(null);
 const slotRef = ref(null);
+const arrowPosition = ref('left');
 
 const showTip = () => {
   const slotElement = slotRef.value.nextElementSibling;
@@ -42,6 +47,7 @@ const showTip = () => {
     // adjust tooltip position based on slotElement's position
     nextTick(() => {
       const tooltip = document.querySelector('.tooltip-tip');
+      tooltip.style.setProperty('--arrow-color', getComputedStyle(tooltip).backgroundColor);
       const positions = {
         top: { 
           top: `${top - (tooltip.offsetHeight + 10)}px`,
@@ -60,8 +66,9 @@ const showTip = () => {
           left: `${Math.min(left + slotElement.offsetWidth + 10, window.innerWidth - tooltip.offsetWidth)}px` // Prevent overflow on the right
         },
       };
-      // check for overflow and adjust position
-      const overflowCheck = (pos) => {
+
+      // Check for overflow and adjust position
+      const overflowCheck = (position) => {
         const space = {
           top: top - tooltip.offsetHeight - 10,
           bottom: window.innerHeight - (top + height + 15) - tooltip.offsetHeight,
@@ -75,11 +82,34 @@ const showTip = () => {
           left: space.left < 10,
           right: space.right < 10,
         };
-        return isOverflowing[pos] ? 
-          (pos === 'top' ? 'bottom' : pos === 'bottom' ? 'top' : pos === 'left' ? 'right' : 'left') : pos;
+
+        const directionMap = {
+          top: 'bottom',
+          bottom: 'top',
+          left: 'right',
+          right: 'left'
+        };
+
+        // Check for both left and right overflow
+        if (isOverflowing.left && isOverflowing.right) {
+          return space.top > space.bottom ? 'top' : 'bottom';
+        }
+
+        // Check for both top and bottom overflow
+        if (isOverflowing.top && isOverflowing.bottom) {
+          return space.left > space.right ? 'right' : 'left';
+        }
+
+        return isOverflowing[position] ? directionMap[position] : position;
       };
 
       const adjustedDirection = overflowCheck(props.direction);
+      arrowPosition.value = {
+        right: 'left',
+        left: 'right',
+        top: 'bottom',
+        bottom: 'top'
+      }[adjustedDirection] || adjustedDirection;
       Object.assign(tooltip.style, positions[adjustedDirection]);
     });
   }, props.delay);
@@ -113,8 +143,54 @@ const hideTip = () => {
           customStyles || (theme === 'dark' ? 'bg-black text-white font-light border-black' : 'bg-white border-gray-300 text-black')
         ]"
       >
+        <div
+          v-if="!noArrow"
+          class="tooltip-arrow"
+          :class="`arrow-${arrowPosition}`"
+        ></div>
         <slot name="content">{{ content }}</slot>
       </div>
     </teleport>
   </div>
 </template>
+
+<style scoped>
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.arrow-top {
+  border-width: 5px 5px 0;
+  border-color: var(--arrow-color, black) transparent transparent transparent; 
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.arrow-bottom {
+  border-width: 0 5px 5px;
+  border-color: transparent transparent var(--arrow-color, black) transparent;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.arrow-left {
+  border-width: 5px 5px 5px 0;
+  border-color: transparent var(--arrow-color, black) transparent transparent;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow-right {
+  border-width: 5px 0 5px 5px;
+  border-color: transparent transparent transparent var(--arrow-color, black);
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+</style>

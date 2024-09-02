@@ -227,11 +227,9 @@ const customHTMLCode = ref(`<template>
 
         <h3 class="text-lg font-bold sublink">The component code</h3>
         <PreviewBlock :template-code="tooltipCode" file-name="Tooltip.vue">
-          <div class="grid grid-cols-2 gap-2">
-            <Tooltip content="I'm hovered" >
-              <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
-            </Tooltip>
-          </div>
+          <Tooltip content="I'm hovered" >
+            <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
+          </Tooltip>
         </PreviewBlock>
         <h3 class="text-lg font-bold sublink">Tooltip Direction and Theme</h3>
         <p>
