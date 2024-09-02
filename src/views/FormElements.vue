@@ -612,7 +612,7 @@ const updateValueByList = (value, label) => {
           </div>
           <font-awesome-icon
             :icon="['fas', 'chevron-down']"
-            class="transition-transform duration-200"
+            class="transition-transform duration-200 text-black"
             :class="{
               'rotate-180': optionsOpen
             }"
