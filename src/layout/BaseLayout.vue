@@ -1,5 +1,5 @@
 <script setup>
-import { NavBar, SideBar } from '@/components';
+import { NavBar, SideBar, AlertToast } from '@/components';
 </script>
 
 <template>
@@ -12,4 +12,5 @@ import { NavBar, SideBar } from '@/components';
       </div>
     </div>
   </div>
+  <AlertToast />
 </template>

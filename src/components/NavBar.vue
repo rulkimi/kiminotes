@@ -1,10 +1,18 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useMainStore, useThemeStore } from '@/store';
+import { getCurrentInstance } from 'vue';
 
 const store = useMainStore();
 const themeStore = useThemeStore();
 const router = useRouter();
+const { proxy } = getCurrentInstance();
+
+const toggleDarkMode = () => {
+  themeStore.toggleDarkMode();
+  console.log(proxy)
+  proxy.$toast.show();
+}
 </script>
 
 
@@ -24,7 +32,7 @@ const router = useRouter();
             src="@/assets/sun.svg"
             alt="Toggle dark mode"
             width="24" 
-            @click="themeStore.toggleDarkMode"
+            @click="toggleDarkMode"
             class="cursor-pointer transition duration-200 hover:scale-110"
           >
           <img
@@ -32,7 +40,7 @@ const router = useRouter();
             src="@/assets/moon.svg"
             alt="Toggle dark mode"
             width="24" 
-            @click="themeStore.toggleDarkMode"
+            @click="toggleDarkMode"
             class="cursor-pointer transition duration-200 hover:scale-110"
           >
           <a href="https://github.com/rulkimi/kiminotes" target="_blank" class="cursor-pointer transition duration-200 hover:scale-110">

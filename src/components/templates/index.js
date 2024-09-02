@@ -11,5 +11,5 @@ export {
   FormTextarea,
   PreviewBlock,
   RadialProgressBarComponent,
-  Tooltip
+  Tooltip,
 };

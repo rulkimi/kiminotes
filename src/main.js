@@ -4,6 +4,7 @@ import router from '@/router';
 import { createPinia } from 'pinia';
 import { highlightDirective } from '@/directives';
 import { useMainStore } from '@/store';
+import toast from '@/plugins/toast';
 import '@/style.css';
 
 /* import the fontawesome core */
@@ -31,6 +32,7 @@ app.directive('highlight', highlightDirective);
 // plugins
 app.use(router);
 app.use(pinia);
+app.use(toast);
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 const store = useMainStore();
