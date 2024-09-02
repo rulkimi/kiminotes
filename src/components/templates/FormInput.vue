@@ -1,11 +1,11 @@
 <script setup>
 import { defineEmits, computed, useSlots } from 'vue';
 
-const emit = defineEmits(['update:modelValue', 'change']);
+const emit = defineEmits(['update:modelValue', 'input', 'change']);
 
 const props = defineProps({
   modelValue: {
-    type: [String, Number],
+    type: [String, Number, null],
     required: true
   },
   label: {
@@ -66,6 +66,7 @@ const slots = useSlots();
 
 const updateValue = event => {
   emit('update:modelValue', event.target.value);
+  emit('input', event.target.value);
 }
 
 const onChange = event => {
@@ -129,7 +130,7 @@ const conditionalInputStyles = computed(() => {
         :value="modelValue"
         @input="updateValue($event)"
         @change="onChange($event)"
-        class="block outline-none bg-transparent"
+        class="block outline-none bg-transparent text-black"
         :class="[width, { 'no-arrows': type === 'number' }]"
         :disabled="disabled"
         :readonly="readonly"
