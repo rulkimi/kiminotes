@@ -2,8 +2,13 @@
 import { computed } from 'vue';
 import { useMainStore } from '@/store'; // Adjust the path as needed
 
-defineProps({
-  sublinks: Array
+import { getSubLinks } from '@/utils';
+import { ref, onMounted } from 'vue';
+
+const sublinks = ref([]);
+
+onMounted(() => {
+  sublinks.value = getSubLinks();
 });
 
 const store = useMainStore();

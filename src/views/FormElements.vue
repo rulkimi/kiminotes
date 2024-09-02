@@ -15,7 +15,8 @@ const selectedValue = ref('Hello');
     </template>
 
     <template #content>
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-4">
+        <h3 class="text-lg font-bold sublink">The component code</h3>
         <FormInput
           label="Form Input"
           id="form-input"

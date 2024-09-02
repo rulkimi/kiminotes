@@ -1,15 +1,8 @@
 <script setup>
 import PageLayout from '@/layout/PageLayout.vue';
 import { PreviewBlock } from '@/components/templates';
-import { getSubLinks } from '@/utils';
 
-import { ref, onMounted } from 'vue';
-
-const sublinks = ref([]);
-
-onMounted(() => {
-  sublinks.value = getSubLinks();
-});
+import { ref } from 'vue';
 
 const aliasConfigCode = ref(`resolve: {
   alias: {
@@ -22,7 +15,7 @@ const exampleImportCodeWithAlias = ref(`import MyComponent from '@/components/My
 </script>
 
 <template>
-  <PageLayout :sublinks="sublinks">
+  <PageLayout>
     <template #subtitle>
       Setting up Path Aliasing in Vite
     </template>

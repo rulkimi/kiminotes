@@ -2,15 +2,7 @@
 import PageLayout from '@/layout/PageLayout.vue';
 import { PreviewBlock } from '@/components/templates';
 
-import { getSubLinks } from '@/utils';
-
-import { ref, onMounted } from 'vue';
-
-const sublinks = ref([]);
-
-onMounted(() => {
-  sublinks.value = getSubLinks();
-});
+import { ref } from 'vue';
 
 const pathFunctionCode = ref(`PATH(<ID_columnName>, <parent_columnName>)
 
@@ -26,7 +18,7 @@ const earlierFunctionCode = ref(`EARLIER(<column>, <number>)
 </script>
 
 <template>
-  <PageLayout :sublinks="sublinks">
+  <PageLayout>
     <template #subtitle>
       Understanding DAX Functions: PATH and EARLIER
     </template>

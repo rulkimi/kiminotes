@@ -2,14 +2,7 @@
 import PageLayout from '@/layout/PageLayout.vue';
 import { RadialProgressBarComponent, PreviewBlock } from '@/components/templates';
 
-import { getSubLinks } from '@/utils';
-import { ref, onMounted } from 'vue';
-
-const sublinks = ref([]);
-
-onMounted(() => {
-  sublinks.value = getSubLinks();
-});
+import { ref } from 'vue';
 
 const progress = [ref(10), ref(20), ref(40)];
 
@@ -127,7 +120,7 @@ setInterval(() => {
 </script>
 
 <template>
-  <PageLayout :sublinks="sublinks">
+  <PageLayout>
     <template #subtitle>
       Radial Progress Bar with Tailwind CSS.
     </template>
@@ -155,7 +148,7 @@ setInterval(() => {
         <h3 class="text-lg font-bold sublink">How to use?</h3>
         <p>Import in the component you want to use and configure the props.</p>
         <PreviewBlock :template-code="exampleUsageCode" file-name="App.vue" />
-        
+
       </div>
     </template>
   </PageLayout>

@@ -2,14 +2,7 @@
 import { Tooltip, PreviewBlock, FormSelect } from '@/components/templates';
 import PageLayout from '@/layout/PageLayout.vue';
 
-import { getSubLinks } from '@/utils';
-import { ref, onMounted } from 'vue';
-
-const sublinks = ref([]);
-
-onMounted(() => {
-  sublinks.value = getSubLinks();
-});
+import { ref } from 'vue';
 
 const tooltipCode = ref(`<script setup>
 import { ref, nextTick } from 'vue';
@@ -292,7 +285,7 @@ const customHTMLCode = ref(`<template>
 </script>
 
 <template>
-  <PageLayout :sublinks="sublinks">
+  <PageLayout>
 
     <template #subtitle>
       Tooltip component with Tailwind CSS.

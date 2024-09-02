@@ -1,15 +1,8 @@
 <script setup>
 import PageLayout from '@/layout/PageLayout.vue';
 import { PreviewBlock } from '@/components/templates';
-import { getSubLinks } from '@/utils';
 
-import { ref, onMounted } from 'vue';
-
-const sublinks = ref([]);
-
-onMounted(() => {
-  sublinks.value = getSubLinks();
-});
+import { ref } from 'vue';
 
 const jsonCode = ref(`{
   "name": "<repository-name>",
@@ -51,7 +44,7 @@ export default defineConfig({
 </script>
 
 <template>
-  <PageLayout :sublinks="sublinks">
+  <PageLayout>
 
     <template #subtitle>
       How to configure web history properly for deployment in github pages.
