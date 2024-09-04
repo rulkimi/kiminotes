@@ -80,7 +80,7 @@ const scrollToLink = element => {
             </svg>
             <span class="font-semibold">{{ store.currentMenu?.name }}</span>
           </div>
-          <div class="relative">
+          <div v-if="store.sublinks.length" class="relative">
             <div @click="showSublinks = !showSublinks">On this page</div>
             <transition name="appear">
               <div

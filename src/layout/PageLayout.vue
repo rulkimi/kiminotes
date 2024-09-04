@@ -21,6 +21,13 @@ const currentSection = computed(() => store.currentSection);
 const scrollToLink = element => {
   element.scrollIntoView({ block: 'start', behavior: 'smooth' });
 }
+
+const websites = ref([
+  { title: 'Recipe Generator', icon: ['fas', 'utensils'], link: '/recipe-generator'},
+  { title: 'Non-Followers Tracker', icon: ['fab', 'square-instagram'], link: '/insta-nonfollowers'},
+  { title: 'Bus Location Tracker', icon: ['fas', 'bus-simple'], link: '/bus-location-server'},
+  { title: 'Portfolio', icon: ['fas', 'briefcase'], link: '/portfolio-vue'},
+]);
 </script>
 
 <template>
@@ -41,16 +48,37 @@ const scrollToLink = element => {
       </div>
     </div>
     <div class="hidden lg:block p-6 sticky top-0 self-start">
-      <p class="font-semibold mb-4">On this page</p>
-      <ul class="flex flex-col gap-2">
-        <li
-          class="cursor-pointer hover:text-primary transition-all duration-200"
-          v-for="sublink in sublinks"
-          @click="scrollToLink(sublink.element)"
-        >
-          {{ sublink.title }}
-        </li>
-      </ul>
+      <div class="flex flex-col gap-8">
+
+        <!-- on this page -->
+        <div v-if="sublinks.length" class="flex flex-col gap-4">
+          <p class="font-semibold">On this page</p>
+          <ul class="flex flex-col gap-2">
+            <li
+              class="cursor-pointer hover:text-primary transition-all duration-200"
+              v-for="sublink in sublinks"
+              @click="scrollToLink(sublink.element)"
+            >
+              {{ sublink.title }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- other websites -->
+        <div class="flex flex-col gap-4">
+          <p class="font-semibold">Check out my websites!</p>
+          <ul class="flex flex-col gap-2">
+            <li
+              class="cursor-pointer hover:text-primary transition-all duration-200 flex flex-start items-center gap-2"
+              v-for="website in websites"
+            >
+              <font-awesome-icon :icon="website.icon" />
+              <a :href="'https://rulkimi.github.io' + website.link" target="_blank">{{ website.title }}</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </div>
 </template>
