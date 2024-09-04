@@ -6,10 +6,11 @@ export const useToastStore = defineStore('toast', () => {
 
   const MAX_TOASTS = 3;
 
-  const showToast = ({ message } = { message: 'Default message' }) => {
+  const showToast = ({ message, icon } = { message: 'Default message', icon: '' }) => {
     const toast = {
       id: Date.now(), 
       message,
+      icon,
       isVisible: true,
       timeout: null,
     };

@@ -17,7 +17,10 @@ const toastStore = useToastStore();
           v-show="toast.isVisible"
           class="z-10 bg-background border p-4 shadow rounded-lg flex items-center gap-2 justify-between min-w-[300px] hover:scale-105 transition-all duration-200"
         >
-          <div>{{ toast.message }}</div>
+          <div class="flex items-center gap-2">
+            <font-awesome-icon v-if="toast.icon" :icon="['far', toast.icon]" />
+            <div>{{ toast.message }}</div>
+          </div>
           <font-awesome-icon
             class="hover:scale-110 cursor-pointer"
             :icon="['fas', 'times']"
