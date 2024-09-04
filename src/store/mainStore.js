@@ -58,6 +58,17 @@ export const useMainStore = defineStore('main', () => {
     isSidebarOpen.value = !isSidebarOpen.value;
   };
 
+  const sublinks = ref([]);
+
+  const setSublinks = links => {
+    sublinks.value = links;
+  }
+
+  const pageScroll = ref(null);
+  const setPageScroll = elementRef => {
+    pageScroll.value = elementRef;
+  }
+
   return {
     currentPath,
     currentSection,
@@ -65,6 +76,10 @@ export const useMainStore = defineStore('main', () => {
     sections,
     setCurrentPath,
     isSidebarOpen,
-    toggleSidebar
+    toggleSidebar,
+    sublinks,
+    setSublinks,
+    pageScroll,
+    setPageScroll
   };
 });

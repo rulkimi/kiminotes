@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useMainStore, useThemeStore } from '@/store';
-import { getCurrentInstance } from 'vue';
+import { ref, getCurrentInstance } from 'vue';
 
 const store = useMainStore();
 const themeStore = useThemeStore();
@@ -14,6 +14,17 @@ const toggleDarkMode = () => {
   const icon = themeStore.isDarkMode ? 'moon' : 'sun';
   proxy.$toast.show({ message: `Theme changed to ${theme}.`, icon });
 }
+
+const showSublinks = ref(false);
+const scrollToLink = element => {
+  const elementRect = element.getBoundingClientRect();
+  const offset = 120;
+  const scrollPosition = elementRect.top + store.pageScroll.scrollTop - offset;
+  
+  console.log(store.pageScroll)
+  store.pageScroll.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+  showSublinks.value = false;
+};
 </script>
 
 
@@ -62,12 +73,29 @@ const toggleDarkMode = () => {
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
-        <div v-if="store.currentSection" class="flex items-center gap-2">
-          <span>{{ store.currentSection?.name }}</span>
-          <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 2L6 5L3 8" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          <span class="font-semibold">{{ store.currentMenu?.name }}</span>
+        <div v-if="store.currentSection" class="flex w-full justify-between">
+          <div class="flex items-center gap-2">
+            <span>{{ store.currentSection?.name }}</span>
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 2L6 5L3 8" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="font-semibold">{{ store.currentMenu?.name }}</span>
+          </div>
+          <div class="relative">
+            <div @click="showSublinks = !showSublinks">On this page</div>
+            <div
+              v-if="showSublinks"
+              class="absolute top-[50px] right-0 bg-background w-auto text-nowrap border dark:border-slate-700 rounded-lg p-2 flex flex-col gap-2"
+            >
+              <div
+                v-for="sublink in store.sublinks"
+                :key="sublink.title"
+                @click="scrollToLink(sublink.element)"
+              >
+                {{ sublink.title }}
+              </div>
+            </div>
+          </div>
         </div>
         <div v-else>Home</div>
       </div>

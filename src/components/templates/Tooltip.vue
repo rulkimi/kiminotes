@@ -30,6 +30,10 @@ const props = defineProps({
   noArrow: {
     type: Boolean,
     default: false,
+  },
+  alwaysAppear: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -116,6 +120,7 @@ const showTip = () => {
 };
 
 const hideTip = () => {
+  if (props.alwaysAppear) return;
   clearTimeout(timeout.value);
   active.value = false;
 };

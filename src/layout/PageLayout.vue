@@ -6,12 +6,15 @@ import { getSubLinks } from '@/utils';
 import { ref, onMounted } from 'vue';
 
 const sublinks = ref([]);
+const pageScroll = ref(null);
+const store = useMainStore();
 
 onMounted(() => {
   sublinks.value = getSubLinks();
-});
+  store.setSublinks(sublinks.value);
+  store.setPageScroll(pageScroll.value);
 
-const store = useMainStore();
+});
 
 const currentSection = computed(() => store.currentSection);
 
@@ -22,7 +25,7 @@ const scrollToLink = element => {
 
 <template>
   <div class="grid grid-cols-4">
-    <div class="col-span-4 lg:col-span-3 custom-scroll overflow-y-auto h-[calc(100vh-3.5rem)]">
+    <div ref="pageScroll" class="col-span-4 lg:col-span-3 custom-scroll overflow-y-auto h-[calc(100vh-3.5rem)]">
       <div class="p-6" v-if="currentSection">
         <p class="text-primary font-semibold mb-2">{{ currentSection.name }}</p>
         <h1 class="text-2xl font-bold mb-2">
@@ -41,7 +44,7 @@ const scrollToLink = element => {
       <p class="font-semibold mb-4">On this page</p>
       <ul class="flex flex-col gap-2">
         <li
-          class="cursor-pointer"
+          class="cursor-pointer hover:text-primary transition-all duration-200"
           v-for="sublink in sublinks"
           @click="scrollToLink(sublink.element)"
         >
