@@ -2,21 +2,35 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 export const useToastStore = defineStore('toast', () => {
-  const isToastVisible = ref(false);
-  const timeOut = ref(null);
+  const toasts = ref([]);
 
-  const showToast = () => {
-    if (timeOut.value) clearTimeout(timeOut.value);
-    isToastVisible.value = true;
-    timeOut.value = setTimeout(() => {
-      isToastVisible.value = false;
-    }, 2000);
+  const showToast = ({ message } = { message: 'Default message' }) => {
+    const toast = {
+      id: Date.now(), 
+      message,
+      isVisible: true,
+      timeout: null,
+    };
+    
+    toasts.value.push(toast);
+
+    toast.timeout = setTimeout(() => {
+      hideToast(toast.id);
+    }, 5000);
   };
 
-  const hideToast = () => {
-    isToastVisible.value = false;
-    if (timeOut.value) clearTimeout(timeOut.value);
+  const hideToast = (id) => {
+    const index = toasts.value.findIndex((toast) => toast.id === id);
+    if (index !== -1) {
+      if (toasts.value[index].timeout) clearTimeout(toasts.value[index].timeout);
+      toasts.value[index].isVisible = false;
+
+      // remove the toast from the list after a short delay to allow any exit animation
+      setTimeout(() => {
+        toasts.value.splice(index, 1);
+      }, 300);
+    }
   };
 
-  return { isToastVisible, showToast, hideToast };
+  return { toasts, showToast, hideToast };
 });

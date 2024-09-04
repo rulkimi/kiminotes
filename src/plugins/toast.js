@@ -5,8 +5,8 @@ export default {
     const toastStore = useToastStore();
 
     app.config.globalProperties.$toast = {
-      show() {
-        toastStore.showToast();
+      show(message) {
+        toastStore.showToast(message);
       },
       hide() {
         toastStore.hideToast();
