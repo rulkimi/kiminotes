@@ -21,7 +21,6 @@ const scrollToLink = element => {
   const offset = 120;
   const scrollPosition = elementRect.top + store.pageScroll.scrollTop - offset;
   
-  console.log(store.pageScroll)
   store.pageScroll.scrollTo({ top: scrollPosition, behavior: 'smooth' });
   showSublinks.value = false;
 };
@@ -83,18 +82,20 @@ const scrollToLink = element => {
           </div>
           <div class="relative">
             <div @click="showSublinks = !showSublinks">On this page</div>
-            <div
-              v-if="showSublinks"
-              class="absolute top-[50px] right-0 bg-background w-auto text-nowrap border dark:border-slate-700 rounded-lg p-2 flex flex-col gap-2"
-            >
+            <transition name="appear">
               <div
-                v-for="sublink in store.sublinks"
-                :key="sublink.title"
-                @click="scrollToLink(sublink.element)"
+                v-if="showSublinks"
+                class="absolute top-[50px] right-0 bg-background w-auto text-nowrap border dark:border-slate-700 rounded-lg p-2 flex flex-col gap-2"
               >
-                {{ sublink.title }}
+                <div
+                  v-for="sublink in store.sublinks"
+                  :key="sublink.title"
+                  @click="scrollToLink(sublink.element)"
+                >
+                  {{ sublink.title }}
+                </div>
               </div>
-            </div>
+            </transition>
           </div>
         </div>
         <div v-else>Home</div>
@@ -102,4 +103,17 @@ const scrollToLink = element => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.appear-enter-active {
+  transition: all 0.3s ease;
+}
+.appear-leave-active {
+  transition: all 0.1s ease;
+}
+.appear-enter-from, .appear-leave-to {
+  transform: translateY(-40px);
+  opacity: 0;
+}
+</style>
 
