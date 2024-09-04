@@ -50,7 +50,7 @@ const toastStore = useToastStore();
   position: relative;
 }
 
-.list-leave-to {
+.list-enter-from, .list-leave-to {
   transform: translateY(100%); 
   opacity: 0;
 }

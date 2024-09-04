@@ -10,8 +10,8 @@ const { proxy } = getCurrentInstance();
 
 const toggleDarkMode = () => {
   themeStore.toggleDarkMode();
-  console.log(proxy)
-  proxy.$toast.show({ message: 'Changed theme.' });
+  const theme = themeStore.isDarkMode ? 'dark mode' : 'light mode';
+  proxy.$toast.show({ message: `Theme changed to ${theme}.` });
 }
 </script>
 

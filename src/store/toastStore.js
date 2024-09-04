@@ -4,6 +4,8 @@ import { ref } from 'vue';
 export const useToastStore = defineStore('toast', () => {
   const toasts = ref([]);
 
+  const MAX_TOASTS = 3;
+
   const showToast = ({ message } = { message: 'Default message' }) => {
     const toast = {
       id: Date.now(), 
@@ -11,7 +13,12 @@ export const useToastStore = defineStore('toast', () => {
       isVisible: true,
       timeout: null,
     };
-    
+
+    if (toasts.value.length >= MAX_TOASTS) {
+      const oldestToast = toasts.value.shift();
+      if (oldestToast.timeout) clearTimeout(oldestToast.timeout);
+    }
+
     toasts.value.push(toast);
 
     toast.timeout = setTimeout(() => {
@@ -25,7 +32,7 @@ export const useToastStore = defineStore('toast', () => {
       if (toasts.value[index].timeout) clearTimeout(toasts.value[index].timeout);
       toasts.value[index].isVisible = false;
 
-      // remove the toast from the list after a short delay to allow any exit animation
+      // Remove the toast from the list after a short delay to allow any exit animation
       setTimeout(() => {
         toasts.value.splice(index, 1);
       }, 300);
