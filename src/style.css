@@ -13,7 +13,7 @@
   }  
 
   body {
-    @apply bg-background m-0 min-w-[320px] min-h-screen text-text text-sm;
+    @apply bg-background m-0 min-w-[320px] min-h-screen text-text text-sm md:text-base;
   }
   pre {
     @apply relative whitespace-normal;
