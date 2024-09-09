@@ -1,6 +1,6 @@
 <script setup>
 import PageLayout from '@/layout/PageLayout.vue';
-import { RadialProgressBarComponent, PreviewBlock } from '@/components/templates';
+import { RadialProgressBar, PreviewBlock } from '@/components/templates';
 
 import { ref } from 'vue';
 
@@ -131,9 +131,9 @@ setInterval(() => {
         <PreviewBlock :template-code="componentCode" file-name="RadialProgressbar.vue">
           <div class="flex flex-col md:flex-row gap-4">
             <div class="flex gap-4">
-              <RadialProgressBarComponent :size="70" :progress="progress[0].value" />
-              <RadialProgressBarComponent :size="70" :progress="progress[1].value" />
-              <RadialProgressBarComponent :size="70" :progress="progress[2].value" />
+              <RadialProgressBar :size="70" :progress="progress[0].value" />
+              <RadialProgressBar :size="70" :progress="progress[1].value" />
+              <RadialProgressBar :size="70" :progress="progress[2].value" />
             </div>
             <div class="flex flex-col gap-2">
               <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg" @click="increaseProgress">+ 10</button>
