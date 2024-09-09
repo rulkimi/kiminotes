@@ -90,7 +90,7 @@ const exampleCode = ref(`<GlowingCard size="w-64 h-40" color="hsl(120, 100%, 50%
 
         <h3 class="text-lg font-bold sublink">The component code</h3>
         <PreviewBlock :template-code="componentCode" file-name="GlowingCard.vue">
-          <div class="flex flex-col md:flex-row gap-4 text-white bg-grid bg-gray-800 p-8 rounded-xl">
+          <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-white bg-grid bg-gray-800 p-8 rounded-xl">
             <GlowingCard size="w-48 h-36" color="red" circle-size="400px">
               Hover here
             </GlowingCard>
@@ -117,7 +117,7 @@ const exampleCode = ref(`<GlowingCard size="w-64 h-40" color="hsl(120, 100%, 50%
           <strong>Note:</strong> For the best visual effect, it is recommended to use the <span class="font-mono">GlowingCard</span> in a dark-themed layout or background. The glowing effect stands out more prominently against dark surfaces, enhancing the overall visual appeal.
         </p>
         <PreviewBlock :template-code="exampleCode">
-          <div class="flex flex-col md:flex-row gap-4 text-white">
+          <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-white">
             <GlowingCard size="w-64 h-40" color="hsl(120, 100%, 50%)" circle-size="500px">
               Hover here
             </GlowingCard>
