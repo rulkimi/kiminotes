@@ -9,6 +9,10 @@ const props = defineProps({
   size: {
     type: String,
     default: 'w-80 h-36'
+  },
+  circleSize: {
+    type: String,
+    default: '700px'
   }
 });
 
@@ -31,8 +35,8 @@ const glowStyle = computed(() => ({
   left: `${position.value.x}px`,
   transform: 'translate(-50%, -50%)',
   background: `radial-gradient(${props.color}, transparent, transparent)`,
-  width: '700px',
-  height: '700px',
+  width: props.circleSize,
+  height: props.circleSize,
   opacity: isHovering.value ? 1 : 0,
   transition: 'opacity 0.5s, top 0s, left 0s', // smooth opacity change without repositioning
 }));
