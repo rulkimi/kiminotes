@@ -190,7 +190,7 @@ const updateValueByList = (value, label) => {
         <button
           @click="toggleOptions"
           :id="id"
-          class="rounded-lg block py-3 h-[50px] flex justify-between items-center bg-white"
+          class="rounded-lg py-3 h-[50px] flex justify-between items-center bg-white"
           :class="[
             baseInputStyles,
             conditionalInputStyles,
