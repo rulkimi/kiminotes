@@ -1,4 +1,4 @@
-import{P as l}from"./PageLayout-BpadzOpk.js";import{_ as c}from"./Tooltip.vue_vue_type_style_index_0_scoped_e920ed47_lang-CKT4dJ5N.js";import{r as e,o as i,c as r,w as t,a as o,b as f,u as m,d as s}from"./index-B84daWFs.js";const u=s("span",{class:"font-mono"},"offsetHeight()",-1),d=s("span",{class:"font-mono"},"getBoundingClientRect()",-1),g={__name:"ScrollOffset",setup(p){const n=e(`<template>
+import{P as l}from"./PageLayout-BWNIq2Jc.js";import{_ as c}from"./Tooltip.vue_vue_type_style_index_0_scoped_e920ed47_lang-CVtpTcwu.js";import{r as e,o as i,c as r,w as t,a as o,b as f,u as m,d as s}from"./index-DOGTbr6_.js";const u=s("span",{class:"font-mono"},"offsetHeight()",-1),d=s("span",{class:"font-mono"},"getBoundingClientRect()",-1),g={__name:"ScrollOffset",setup(p){const n=e(`<template>
   <nav ref="navbar" class="fixed pb-2 w-full z-20 top-0 start-0">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
