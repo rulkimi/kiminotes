@@ -28,7 +28,7 @@ const slots = useSlots();
 const hasDisplay = computed(() => !!slots.default);
 
 const codePreview = computed(() => {
-  const previewLength = 200;
+  const previewLength = 500;
   let codeSnippet = '';
 
   switch (activeTab.value) {
