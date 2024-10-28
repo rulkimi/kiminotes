@@ -34,18 +34,18 @@ const hasDisplay = computed(() => !!slots.default);
       <slot></slot>
     </div>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col border-x border-b rounded-b-lg dark:border-slate-700">
       <!-- Tabs -->
       <div
         v-if="fileName"
-        class="flex space-x-4 p-2 border-t border-x dark:border-slate-700"
+        class="flex space-x-4 p-2 border-t dark:border-slate-700"
         :class="{ 'rounded-t-lg' : !hasDisplay }"
       >
         <div class="text-primary font-semibold">{{ fileName }}</div>
       </div>
       <div
         v-else
-        class="flex space-x-4 p-2 border-t border-x dark:border-slate-700"
+        class="flex space-x-4 p-2 border-t dark:border-slate-700"
         :class="{ 'rounded-t-lg' : !hasDisplay }"
       >
         <button
@@ -80,26 +80,35 @@ const hasDisplay = computed(() => !!slots.default);
       </div>
 
       <!-- Code Display -->
-      <div v-if="activeTab === 'template'">
-        <pre v-highlight>
-          <code class="xml">{{ templateCode }}</code>
-        </pre>
-      </div>
-      <div v-if="activeTab === 'script'">
-        <pre v-highlight>
-          <code class="javascript">{{ scriptCode }}</code>
-        </pre>
-      </div>
-      <div v-if="activeTab === 'style'">
-        <pre v-highlight>
-          <code class="css">{{ styleCode }}</code>
-        </pre>
-      </div>
-      <div v-if="activeTab === 'json'">
-        <pre v-highlight>
-          <code class="css">{{ jsonCode }}</code>
-        </pre>
-      </div>
+      <template v-if="true">
+        <div v-if="activeTab === 'template'">
+          <pre v-highlight>
+            <code class="xml">{{ templateCode }}</code>
+          </pre>
+        </div>
+        <div v-if="activeTab === 'script'">
+          <pre v-highlight>
+            <code class="javascript">{{ scriptCode }}</code>
+          </pre>
+        </div>
+        <div v-if="activeTab === 'style'">
+          <pre v-highlight>
+            <code class="css">{{ styleCode }}</code>
+          </pre>
+        </div>
+        <div v-if="activeTab === 'json'">
+          <pre v-highlight>
+            <code class="css">{{ jsonCode }}</code>
+          </pre>
+        </div>
+      </template>
+
+      <template v-else>
+        <div class="bg-background h-20 rounded-b-lg">
+
+        </div>
+      </template>
+
     </div>
   </div>
 </template>
