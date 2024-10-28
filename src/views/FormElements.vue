@@ -723,7 +723,7 @@ option {
       <div class="flex flex-col gap-4">
 
         <h3 class="text-lg font-bold sublink">Input Element</h3>
-        <PreviewBlock :template-code="formInputComponentCode" file-name="FormInput.vue">
+        <PreviewBlock hide-code :template-code="formInputComponentCode" file-name="FormInput.vue">
           <FormInput
             label="Label"
             id="form-input"
@@ -733,7 +733,7 @@ option {
         </PreviewBlock>
 
         <h3 class="text-lg font-bold sublink">Textarea Element</h3>
-        <PreviewBlock :template-code="formTextareaComponentCode" file-name="FormTextarea.vue">
+        <PreviewBlock hide-code :template-code="formTextareaComponentCode" file-name="FormTextarea.vue">
           <FormTextarea
             label="Label"
             id="form-textarea"
@@ -743,7 +743,7 @@ option {
         </PreviewBlock>
 
         <h3 class="text-lg font-bold sublink">Select Element</h3>
-        <PreviewBlock :template-code="formSelectComponentCode" file-name="FormSelect.vue">
+        <PreviewBlock hide-code :template-code="formSelectComponentCode" file-name="FormSelect.vue">
           <FormSelect
             label="Label"
             v-model="selectedValue"

@@ -89,7 +89,7 @@ const exampleCode = ref(`<GlowingCard size="w-64 h-40" color="hsl(120, 100%, 50%
       <div class="flex flex-col gap-4">
 
         <h3 class="text-lg font-bold sublink">The component code</h3>
-        <PreviewBlock :template-code="componentCode" file-name="GlowingCard.vue">
+        <PreviewBlock hide-code :template-code="componentCode" file-name="GlowingCard.vue">
           <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-white bg-grid bg-gray-800 p-8 rounded-xl">
             <GlowingCard size="w-48 h-36" color="red" circle-size="400px">
               Hover here

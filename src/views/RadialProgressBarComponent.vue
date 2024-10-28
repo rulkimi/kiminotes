@@ -128,7 +128,7 @@ setInterval(() => {
       <div class="flex flex-col gap-4">
 
         <h3 class="text-lg font-bold sublink">The component code</h3>
-        <PreviewBlock :template-code="componentCode" file-name="RadialProgressbar.vue">
+        <PreviewBlock hide-code :template-code="componentCode" file-name="RadialProgressbar.vue">
           <div class="flex flex-col md:flex-row gap-4">
             <div class="flex gap-4">
               <RadialProgressBar :size="70" :progress="progress[0].value" />

@@ -295,7 +295,7 @@ const customHTMLCode = ref(`<template>
       <div class="flex flex-col gap-4">
 
         <h3 class="text-lg font-bold sublink">The component code</h3>
-        <PreviewBlock :template-code="tooltipCode" file-name="Tooltip.vue">
+        <PreviewBlock hide-code :template-code="tooltipCode" file-name="Tooltip.vue">
           <Tooltip content="I'm hovered" >
             <button class="bg-primary/20 hover:bg-primary/30 px-2 py-1 rounded-lg">Hover Over Me!</button>
           </Tooltip>

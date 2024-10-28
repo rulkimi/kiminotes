@@ -7,10 +7,11 @@ const props = defineProps({
   scriptCode: String,
   styleCode: String,
   jsonCode: String,
+  hideCode: Boolean,
 });
 
 const activeTab = ref('');
-const showCode = ref(false)
+const showCode = ref(!props.hideCode)
 
 const determineActiveTab = () => {
   if (props.templateCode) return 'template';
