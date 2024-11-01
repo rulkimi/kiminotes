@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, useSlots, onMounted } from 'vue';
+import { ref, computed, useSlots, onMounted, getCurrentInstance } from 'vue';
 
 const props = defineProps({
   fileName: String,
@@ -54,6 +54,10 @@ const codePreview = computed(() => {
     : codeSnippet;
 });
 
+const { proxy } = getCurrentInstance();
+const copyText = ref('Copy');
+const copyTextTimeout = ref(null);
+
 const copyCode = () => {
   let codeToCopy = '';
 
@@ -77,11 +81,19 @@ const copyCode = () => {
   if (codeToCopy) {
     navigator.clipboard.writeText(codeToCopy).then(() => {
       // alert('Code copied to clipboard');
+      proxy.$toast.show({ message: 'Code copied to clipboard.', icon: ['fas', 'check'] });
+      copyText.value = 'Copied';
+      if (copyTextTimeout.value) clearTimeout(copyTextTimeout.value);
+      copyTextTimeout.value = setTimeout(() => {
+        copyText.value = 'Copy';
+      }, 3000);
     }).catch((err) => {
-      console.error('Failed to copy: ', err);
+      // console.error('Failed to copy: ', err);
+      proxy.$toast.show({ message: 'Failed to copy.', icon: ['fas', 'times'] });
     });
   } else {
     // alert('No code available to copy');
+    proxy.$toast.show({ message: 'No code available to copy.', icon: ['fas', 'times'] });
   }
 };
 </script>
@@ -141,7 +153,7 @@ const copyCode = () => {
         </div>
         <div class="flex gap-2">
           <button v-if="showCode" @click="showCode = false">Hide Code</button>
-          <button @click="copyCode">Copy</button>
+          <button class="hover:scale-105 transition-transform duration-300" @click="copyCode">{{ copyText }}</button>
         </div>
       </div>
 

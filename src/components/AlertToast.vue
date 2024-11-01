@@ -18,7 +18,7 @@ const toastStore = useToastStore();
           class="z-10 bg-background border dark:border-slate-700 p-4 shadow rounded-lg flex items-center gap-2 justify-between min-w-[300px] hover:scale-105 transition-all duration-200"
         >
           <div class="flex items-center gap-2">
-            <font-awesome-icon v-if="toast.icon" :icon="['far', toast.icon]" />
+            <font-awesome-icon v-if="toast.icon" :icon="toast.icon" />
             <div>{{ toast.message }}</div>
           </div>
           <font-awesome-icon

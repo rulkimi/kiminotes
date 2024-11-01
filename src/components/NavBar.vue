@@ -12,7 +12,7 @@ const toggleDarkMode = () => {
   themeStore.toggleDarkMode();
   const theme = themeStore.isDarkMode ? 'dark mode' : 'light mode';
   const icon = themeStore.isDarkMode ? 'moon' : 'sun';
-  proxy.$toast.show({ message: `Theme changed to ${theme}.`, icon });
+  proxy.$toast.show({ message: `Theme changed to ${theme}.`, icon: ['far', icon] });
 }
 
 const showSublinks = ref(false);
