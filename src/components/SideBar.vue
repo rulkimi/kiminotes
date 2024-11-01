@@ -15,7 +15,7 @@ const clickLink = path => {
       'translate-x-0': store.isSidebarOpen,
       '-translate-x-full': !store.isSidebarOpen
     }"
-    class="fixed top-0 left-0 w-[300px] h-full bg-background transition-transform transform md:translate-x-0 md:relative md:sticky md:top-[3.5rem] md:h-[calc(100vh-3.5rem)] border-r dark:border-slate-700 overflow-auto text-nowrap z-10"
+    class="fixed top-0 left-0 w-[300px] h-full bg-background transition-transform transform md:translate-x-0 md:sticky md:top-[3.5rem] md:h-[calc(100vh-3.5rem)] border-r dark:border-slate-700 overflow-auto text-nowrap z-10"
   >
     <div class="w-full p-6">
 
