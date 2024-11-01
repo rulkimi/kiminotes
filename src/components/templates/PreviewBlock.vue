@@ -176,7 +176,7 @@ const copyCode = () => {
           </pre>
           <div class="absolute inset-0 flex justify-center items-center">
             <div
-              class="hover:scale-105 cursor-pointer transition-transform duration-300"
+              class="hover:scale-105 cursor-pointer transition-transform duration-300 text-white"
               @click="showCode = true"
             >
               <font-awesome-icon :icon="['fas', 'eye']" size="lg" />
