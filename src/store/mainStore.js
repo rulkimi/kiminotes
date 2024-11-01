@@ -21,7 +21,7 @@ export const useMainStore = defineStore('main', () => {
     {
       name: 'Components',
       menus: [
-        { name: 'Form Elements', path: '/form-elements' },
+        { name: 'Form Elements', path: '/form-elements', isBeta: true },
         { name: 'Radial Progress Bar', path: '/radial-progress-bar' },
         { name: 'Tooltip', path: '/tooltip' },
         { name: 'Glowing Card', path: '/glowing-card' },

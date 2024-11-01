@@ -29,15 +29,17 @@ const clickLink = path => {
             <li
               v-for="menu in section.menus"
               :key="menu.path"
-              class="pl-4 border-l dark:border-slate-700"
-              :class="{ 'text-primary border-primary dark:!border-primary font-semibold' : menu.path === store.currentPath }"
+              class="pl-4 border-l dark:border-slate-700 flex items-center gap-2"
+              :class="{ 'border-primary dark:!border-primary' : menu.path === store.currentPath }"
             >
               <router-link
                 :to="menu.path"
+                :class="{ 'text-primary font-semibold' : menu.path === store.currentPath }"
                 @click="clickLink(menu.path)"
               >
                 {{ menu.name }}
               </router-link>
+              <span v-if="menu.isBeta" class="text-xs font-bold px-2 py-1 border dark:border-slate-700 rounded-full">BETA</span>
             </li>
           </ul>
         </div>
