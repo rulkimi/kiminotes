@@ -26,7 +26,7 @@ const websites = ref([
   { title: 'Recipe Generator', icon: ['fas', 'utensils'], link: '/recipe-generator'},
   { title: 'Non-Followers Tracker', icon: ['fab', 'square-instagram'], link: '/insta-nonfollowers'},
   { title: 'Bus Location Tracker', icon: ['fas', 'bus-simple'], link: '/bus-location-server'},
-  { title: 'Portfolio', icon: ['fas', 'briefcase'], link: '/portfolio-vue'},
+  { title: 'Portfolio', icon: ['fas', 'briefcase'], link: '/kimi-portfolio'},
 ]);
 </script>
 
