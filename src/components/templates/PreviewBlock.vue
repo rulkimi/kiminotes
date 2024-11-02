@@ -109,7 +109,7 @@ const copyCode = () => {
       :class="{ 'rounded-t-lg' : !hasDisplay }"
     >
       <!-- Tabs -->
-      <div class="flex w-full justify-between rounded-lg border-t dark:border-slate-700 p-3">
+      <div class="flex w-full justify-between border-t dark:border-slate-700 p-3" :class="{ 'rounded-lg' : !hasDisplay }">
         <div
           v-if="fileName"
           class="flex"
