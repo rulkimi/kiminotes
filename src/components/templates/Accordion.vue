@@ -47,7 +47,7 @@ const toggle = (index) => {
           <button type="button">
             <div
               class="flex justify-between w-full items-center gap-2"
-              :class="{ 'text-blue-500' : expandedIndices.includes(index) }"
+              :class="{ 'text-primary' : expandedIndices.includes(index) }"
             >
               <slot name="header" :item="item" :index="index">
                 <span class="font-semibold">{{ item.header }}</span>
@@ -60,7 +60,7 @@ const toggle = (index) => {
           <font-awesome-icon 
             :icon="['fas', 'chevron-down']"
             class="transiton-transform duration-200"
-            :class="{ 'text-blue-500 rotate-180': expandedIndices.includes(index) }"
+            :class="{ 'text-primary rotate-180': expandedIndices.includes(index) }"
           />
         </div>
       </div>
