@@ -25,6 +25,7 @@ export const useMainStore = defineStore('main', () => {
         { name: 'Radial Progress Bar', path: '/radial-progress-bar' },
         { name: 'Tooltip', path: '/tooltip' },
         { name: 'Glowing Card', path: '/glowing-card' },
+        { name: 'Accordion', path: '/accordion' },
       ]
     },
     {

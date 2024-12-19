@@ -5,6 +5,7 @@ import PreviewBlock from './PreviewBlock.vue';
 import RadialProgressBar from './RadialProgressBar.vue';
 import Tooltip from './Tooltip.vue';
 import GlowingCard from './GlowingCard.vue';
+import Accordion from './Accordion.vue';
 
 export {
   FormInput,
@@ -14,4 +15,5 @@ export {
   RadialProgressBar,
   Tooltip,
   GlowingCard,
+  Accordion,
 };

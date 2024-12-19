@@ -14,6 +14,7 @@ const routes = [
   { path: '/dax-code', component: () => import('../views/DAXCode.vue') },
   { path: '/tooltip', component: () => import('../views/TooltipComponent.vue') },
   { path: '/glowing-card', component: () => import('../views/GlowingCardComponent.vue') },
+  { path: '/accordion', component: () => import('../views/AccordionComponent.vue') },
 ]
 
 const router = createRouter({
