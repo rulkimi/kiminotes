@@ -16,7 +16,9 @@ import { PreviewBlock, Accordion } from '@/components/templates';
           { header: 'Section 3', body: 'Content for section 3', remarks: 'Bad' },
         ]"
       >
-
+        <template #header-remark="{item}">
+          {{ item.remarks }}
+        </template>
       </Accordion>
     </template>
   </PageLayout>
